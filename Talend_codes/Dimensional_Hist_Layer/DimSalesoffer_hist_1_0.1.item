@@ -1,0 +1,823 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<talendfile:ProcessType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" defaultContext="Default" jobType="Standard">
+  <context confirmationNeeded="false" name="Default">
+    <contextParameter comment="" name="taskname" prompt="taskname?" promptNeeded="false" type="id_String" value="Task_Dimsalesoffer_SCD2_Load"/>
+    <contextParameter comment="" name="tablename" prompt="tablename?" promptNeeded="false" type="id_String" value="dimsalesoffer_1"/>
+    <contextParameter comment="" name="filename" prompt="filename?" promptNeeded="false" type="id_String" value=""/>
+    <contextParameter comment="" name="lastruntime" prompt="lastruntime?" promptNeeded="false" type="id_String" value=""/>
+    <contextParameter comment="" name="errordesc" prompt="errordesc?" promptNeeded="false" type="id_String" value=""/>
+    <contextParameter comment="" name="insertcount" prompt="insertcount?" promptNeeded="false" type="id_String" value="0"/>
+    <contextParameter comment="" name="updatecount_SCD2" prompt="updatecount_SCD2?" promptNeeded="false" type="id_String" value="0"/>
+    <contextParameter comment="" name="updatecount" prompt="updatecount?" promptNeeded="false" type="id_String" value="0"/>
+    <contextParameter comment="" name="deletecount" prompt="deletecount?" promptNeeded="false" type="id_String" value="0"/>
+    <contextParameter comment="" name="interval" prompt="interval?" promptNeeded="false" type="id_Integer" value="5"/>
+    <contextParameter comment="" name="hardstop" prompt="hardstop?" promptNeeded="false" type="id_Integer" value="30"/>
+    <contextParameter comment="" name="mailfrom" prompt="mailfrom?" promptNeeded="false" type="id_String" value=""/>
+    <contextParameter comment="" name="mailto" prompt="mailto?" promptNeeded="false" type="id_String" value=""/>
+    <contextParameter comment="" name="currentdate" prompt="currentdate?" promptNeeded="false" type="id_String" value=""/>
+    <contextParameter comment="" name="datadate" prompt="datadate?" promptNeeded="false" type="id_String" value=""/>
+    <contextParameter comment="" name="sourcesystem" prompt="sourcesystem?" promptNeeded="false" type="id_String" value="RDS PRD ENGINE"/>
+    <contextParameter comment="" name="metadataschema" prompt="metadataschema?" promptNeeded="false" type="id_String" value="edfeetlmetadata"/>
+    <contextParameter comment="" name="sourceschema" prompt="sourceschema?" promptNeeded="false" type="id_String" value="edfenormalisedconfzone"/>
+    <contextParameter comment="" name="targetschema" prompt="targetschema?" promptNeeded="false" type="id_String" value="edfedimensionalconfzone"/>
+    <contextParameter comment="" name="CDP_Redshift_ETL_Connection_History_AdditionalParams" prompt="CDP_Redshift_ETL_Connection_History_AdditionalParams?" promptNeeded="false" repositoryContextId="_zo1yUEpWEemFhoTESGOWQg" type="id_String" value=""/>
+    <contextParameter comment="" name="CDP_Redshift_ETL_Connection_History_Database" prompt="CDP_Redshift_ETL_Connection_History_Database?" promptNeeded="false" repositoryContextId="_zo1yUEpWEemFhoTESGOWQg" type="id_String" value="cuscdpdb"/>
+    <contextParameter comment="" name="CDP_Redshift_ETL_Connection_History_Login" prompt="CDP_Redshift_ETL_Connection_History_Login?" promptNeeded="false" repositoryContextId="_zo1yUEpWEemFhoTESGOWQg" type="id_String" value="talendcdp"/>
+    <contextParameter comment="" name="CDP_Redshift_ETL_Connection_History_Password" prompt="CDP_Redshift_ETL_Connection_History_Password?" promptNeeded="false" repositoryContextId="_zo1yUEpWEemFhoTESGOWQg" type="id_Password" value="JKjvOhrBi8A9D9dHv8LP/7x88jVTB/iV"/>
+    <contextParameter comment="" name="CDP_Redshift_ETL_Connection_History_Port" prompt="CDP_Redshift_ETL_Connection_History_Port?" promptNeeded="false" repositoryContextId="_zo1yUEpWEemFhoTESGOWQg" type="id_String" value="5439"/>
+    <contextParameter comment="" name="CDP_Redshift_ETL_Connection_History_Schema" prompt="CDP_Redshift_ETL_Connection_History_Schema?" promptNeeded="false" repositoryContextId="_zo1yUEpWEemFhoTESGOWQg" type="id_String" value="edfeetlmetadata"/>
+    <contextParameter comment="" name="CDP_Redshift_ETL_Connection_History_Server" prompt="CDP_Redshift_ETL_Connection_History_Server?" promptNeeded="false" repositoryContextId="_zo1yUEpWEemFhoTESGOWQg" type="id_String" value="cus-cdp-hist-prd.cxeoqrgz9uc2.eu-west-1.redshift.amazonaws.com"/>
+    <contextParameter comment="" name="bucket" prompt="bucket?" promptNeeded="false" repositoryContextId="_6frwsA_yEem7asVPsexWTQ" type="id_String" value="edfe-cus-landingzone-prd"/>
+    <contextParameter comment="" name="iamrole" prompt="iamrole?" promptNeeded="false" repositoryContextId="_6frwsA_yEem7asVPsexWTQ" type="id_String" value="arn:aws:iam::293425831536:role/R-Prod-AllowCDPUserToSeeBucketListInTheConsole"/>
+    <contextParameter comment="" name="kms" prompt="kms?" promptNeeded="false" repositoryContextId="_6frwsA_yEem7asVPsexWTQ" type="id_String" value="6119e989-90db-4bf1-833d-d65738211f15"/>
+  </context>
+  <context confirmationNeeded="false" name="PROD">
+    <contextParameter comment="" name="taskname" prompt="taskname?" promptNeeded="false" type="id_String" value="Task_Dimsalesoffer_SCD2_Load"/>
+    <contextParameter comment="" name="tablename" prompt="tablename?" promptNeeded="false" type="id_String" value="dimsalesoffer_1"/>
+    <contextParameter comment="" name="filename" prompt="filename?" promptNeeded="false" type="id_String" value=""/>
+    <contextParameter comment="" name="lastruntime" prompt="lastruntime?" promptNeeded="false" type="id_String" value=""/>
+    <contextParameter comment="" name="errordesc" prompt="errordesc?" promptNeeded="false" type="id_String" value=""/>
+    <contextParameter comment="" name="insertcount" prompt="insertcount?" promptNeeded="false" type="id_String" value="0"/>
+    <contextParameter comment="" name="updatecount_SCD2" prompt="updatecount_SCD2?" promptNeeded="false" type="id_String" value="0"/>
+    <contextParameter comment="" name="updatecount" prompt="updatecount?" promptNeeded="false" type="id_String" value="0"/>
+    <contextParameter comment="" name="deletecount" prompt="deletecount?" promptNeeded="false" type="id_String" value="0"/>
+    <contextParameter comment="" name="interval" prompt="interval?" promptNeeded="false" type="id_Integer" value="5"/>
+    <contextParameter comment="" name="hardstop" prompt="hardstop?" promptNeeded="false" type="id_Integer" value="30"/>
+    <contextParameter comment="" name="mailfrom" prompt="mailfrom?" promptNeeded="false" type="id_String" value=""/>
+    <contextParameter comment="" name="mailto" prompt="mailto?" promptNeeded="false" type="id_String" value=""/>
+    <contextParameter comment="" name="currentdate" prompt="currentdate?" promptNeeded="false" type="id_String" value=""/>
+    <contextParameter comment="" name="datadate" prompt="datadate?" promptNeeded="false" type="id_String" value=""/>
+    <contextParameter comment="" name="sourcesystem" prompt="sourcesystem?" promptNeeded="false" type="id_String" value="RDS PRD ENGINE"/>
+    <contextParameter comment="" name="metadataschema" prompt="metadataschema?" promptNeeded="false" type="id_String" value="edfeetlmetadata"/>
+    <contextParameter comment="" name="sourceschema" prompt="sourceschema?" promptNeeded="false" type="id_String" value="edfenormalisedconfzone"/>
+    <contextParameter comment="" name="targetschema" prompt="targetschema?" promptNeeded="false" type="id_String" value="edfedimensionalconfzone"/>
+    <contextParameter comment="" name="CDP_Redshift_ETL_Connection_History_AdditionalParams" prompt="CDP_Redshift_ETL_Connection_History_AdditionalParams?" promptNeeded="false" repositoryContextId="_zo1yUEpWEemFhoTESGOWQg" type="id_String" value=""/>
+    <contextParameter comment="" name="CDP_Redshift_ETL_Connection_History_Database" prompt="CDP_Redshift_ETL_Connection_History_Database?" promptNeeded="false" repositoryContextId="_zo1yUEpWEemFhoTESGOWQg" type="id_String" value="cuscdpdb"/>
+    <contextParameter comment="" name="CDP_Redshift_ETL_Connection_History_Login" prompt="CDP_Redshift_ETL_Connection_History_Login?" promptNeeded="false" repositoryContextId="_zo1yUEpWEemFhoTESGOWQg" type="id_String" value="talendcdp"/>
+    <contextParameter comment="" name="CDP_Redshift_ETL_Connection_History_Password" prompt="CDP_Redshift_ETL_Connection_History_Password?" promptNeeded="false" repositoryContextId="_zo1yUEpWEemFhoTESGOWQg" type="id_Password" value="JKjvOhrBi8A9D9dHv8LP/7x88jVTB/iV"/>
+    <contextParameter comment="" name="CDP_Redshift_ETL_Connection_History_Port" prompt="CDP_Redshift_ETL_Connection_History_Port?" promptNeeded="false" repositoryContextId="_zo1yUEpWEemFhoTESGOWQg" type="id_String" value="5439"/>
+    <contextParameter comment="" name="CDP_Redshift_ETL_Connection_History_Schema" prompt="CDP_Redshift_ETL_Connection_History_Schema?" promptNeeded="false" repositoryContextId="_zo1yUEpWEemFhoTESGOWQg" type="id_String" value="edfeetlmetadata"/>
+    <contextParameter comment="" name="CDP_Redshift_ETL_Connection_History_Server" prompt="CDP_Redshift_ETL_Connection_History_Server?" promptNeeded="false" repositoryContextId="_zo1yUEpWEemFhoTESGOWQg" type="id_String" value="cus-cdp-hist-prd.cxeoqrgz9uc2.eu-west-1.redshift.amazonaws.com"/>
+    <contextParameter comment="" name="bucket" prompt="bucket?" promptNeeded="false" repositoryContextId="_6frwsA_yEem7asVPsexWTQ" type="id_String" value="edfe-cus-landingzone-prd"/>
+    <contextParameter comment="" name="iamrole" prompt="iamrole?" promptNeeded="false" repositoryContextId="_6frwsA_yEem7asVPsexWTQ" type="id_String" value="arn:aws:iam::293425831536:role/R-Prod-AllowCDPUserToSeeBucketListInTheConsole"/>
+    <contextParameter comment="" name="kms" prompt="kms?" promptNeeded="false" repositoryContextId="_6frwsA_yEem7asVPsexWTQ" type="id_String" value="6119e989-90db-4bf1-833d-d65738211f15"/>
+  </context>
+  <context confirmationNeeded="false" name="SIT">
+    <contextParameter comment="" name="taskname" prompt="taskname?" promptNeeded="false" type="id_String" value="Task_Dimsalesoffer_SCD2_Load"/>
+    <contextParameter comment="" name="tablename" prompt="tablename?" promptNeeded="false" type="id_String" value="dimsalesoffer_1"/>
+    <contextParameter comment="" name="filename" prompt="filename?" promptNeeded="false" type="id_String" value=""/>
+    <contextParameter comment="" name="lastruntime" prompt="lastruntime?" promptNeeded="false" type="id_String" value=""/>
+    <contextParameter comment="" name="errordesc" prompt="errordesc?" promptNeeded="false" type="id_String" value=""/>
+    <contextParameter comment="" name="insertcount" prompt="insertcount?" promptNeeded="false" type="id_String" value="0"/>
+    <contextParameter comment="" name="updatecount_SCD2" prompt="updatecount_SCD2?" promptNeeded="false" type="id_String" value="0"/>
+    <contextParameter comment="" name="updatecount" prompt="updatecount?" promptNeeded="false" type="id_String" value="0"/>
+    <contextParameter comment="" name="deletecount" prompt="deletecount?" promptNeeded="false" type="id_String" value="0"/>
+    <contextParameter comment="" name="interval" prompt="interval?" promptNeeded="false" type="id_Integer" value="5"/>
+    <contextParameter comment="" name="hardstop" prompt="hardstop?" promptNeeded="false" type="id_Integer" value="30"/>
+    <contextParameter comment="" name="mailfrom" prompt="mailfrom?" promptNeeded="false" type="id_String" value=""/>
+    <contextParameter comment="" name="mailto" prompt="mailto?" promptNeeded="false" type="id_String" value=""/>
+    <contextParameter comment="" name="currentdate" prompt="currentdate?" promptNeeded="false" type="id_String" value=""/>
+    <contextParameter comment="" name="datadate" prompt="datadate?" promptNeeded="false" type="id_String" value=""/>
+    <contextParameter comment="" name="sourcesystem" prompt="sourcesystem?" promptNeeded="false" type="id_String" value="RDS PRD ENGINE"/>
+    <contextParameter comment="" name="metadataschema" prompt="metadataschema?" promptNeeded="false" type="id_String" value="edfeetlmetadata"/>
+    <contextParameter comment="" name="sourceschema" prompt="sourceschema?" promptNeeded="false" type="id_String" value="edfenormalisedconfzone_ntf"/>
+    <contextParameter comment="" name="targetschema" prompt="targetschema?" promptNeeded="false" type="id_String" value="edfedimensionalconfzone"/>
+    <contextParameter comment="" name="CDP_Redshift_ETL_Connection_History_AdditionalParams" prompt="CDP_Redshift_ETL_Connection_History_AdditionalParams?" promptNeeded="false" repositoryContextId="_zo1yUEpWEemFhoTESGOWQg" type="id_String" value=""/>
+    <contextParameter comment="" name="CDP_Redshift_ETL_Connection_History_Database" prompt="CDP_Redshift_ETL_Connection_History_Database?" promptNeeded="false" repositoryContextId="_zo1yUEpWEemFhoTESGOWQg" type="id_String" value="cuscdpdb"/>
+    <contextParameter comment="" name="CDP_Redshift_ETL_Connection_History_Login" prompt="CDP_Redshift_ETL_Connection_History_Login?" promptNeeded="false" repositoryContextId="_zo1yUEpWEemFhoTESGOWQg" type="id_String" value="talendcdp"/>
+    <contextParameter comment="" name="CDP_Redshift_ETL_Connection_History_Password" prompt="CDP_Redshift_ETL_Connection_History_Password?" promptNeeded="false" repositoryContextId="_zo1yUEpWEemFhoTESGOWQg" type="id_Password" value="JKjvOhrBi8A9D9dHv8LP/7x88jVTB/iV"/>
+    <contextParameter comment="" name="CDP_Redshift_ETL_Connection_History_Port" prompt="CDP_Redshift_ETL_Connection_History_Port?" promptNeeded="false" repositoryContextId="_zo1yUEpWEemFhoTESGOWQg" type="id_String" value="5439"/>
+    <contextParameter comment="" name="CDP_Redshift_ETL_Connection_History_Schema" prompt="CDP_Redshift_ETL_Connection_History_Schema?" promptNeeded="false" repositoryContextId="_zo1yUEpWEemFhoTESGOWQg" type="id_String" value="edfeetlmetadata"/>
+    <contextParameter comment="" name="CDP_Redshift_ETL_Connection_History_Server" prompt="CDP_Redshift_ETL_Connection_History_Server?" promptNeeded="false" repositoryContextId="_zo1yUEpWEemFhoTESGOWQg" type="id_String" value="cus-cdp-hist-prd.cxeoqrgz9uc2.eu-west-1.redshift.amazonaws.com"/>
+    <contextParameter comment="" name="bucket" prompt="bucket?" promptNeeded="false" repositoryContextId="_6frwsA_yEem7asVPsexWTQ" type="id_String" value="edfe-cus-landingzone-pre"/>
+    <contextParameter comment="" name="iamrole" prompt="iamrole?" promptNeeded="false" repositoryContextId="_6frwsA_yEem7asVPsexWTQ" type="id_String" value="arn:aws:iam::783693201407:role/R-PreProd-CDPS3Access"/>
+    <contextParameter comment="" name="kms" prompt="kms?" promptNeeded="false" repositoryContextId="_6frwsA_yEem7asVPsexWTQ" type="id_String" value="36740add-5a16-49b1-9353-f464a97d340b"/>
+  </context>
+  <parameters>
+    <elementParameter field="TEXT" name="SCREEN_OFFSET_X" value="0" show="false"/>
+    <elementParameter field="TEXT" name="SCREEN_OFFSET_Y" value="0" show="false"/>
+    <elementParameter field="TEXT" name="REPOSITORY_CONNECTION_ID" value="" show="false"/>
+    <elementParameter field="TEXT" name="OOZIE_PROPERTY_TYPENAME" value="" show="false"/>
+    <elementParameter field="TEXT" name="OOZIE_HADOOP_DISTRIBUTION" value="" show="false"/>
+    <elementParameter field="TEXT" name="OOZIE_HADOOP_VERSION" value="" show="false"/>
+    <elementParameter field="TEXT" name="OOZIE_ENABLE_KERBEROS" value="" show="false"/>
+    <elementParameter field="TEXT" name="OOZIE_NAME_NODE_PRINCIPAL" value="" show="false"/>
+    <elementParameter field="TEXT" name="OOZIE_USERNAME" value="" show="false"/>
+    <elementParameter field="TEXT" name="OOZIE_GROUP" value="" show="false"/>
+    <elementParameter field="TEXT" name="OOZIE_USE_KEYTAB" value="" show="false"/>
+    <elementParameter field="TEXT" name="OOZIE_KT_PRINCIPAL" value="" show="false"/>
+    <elementParameter field="TEXT" name="OOZIE_KEY_TAB" value="" show="false"/>
+    <elementParameter field="TEXT" name="OOZIE_ENABLE_OO_KERBEROS" value="" show="false"/>
+    <elementParameter field="TEXT" name="OOZIE_NAME_NODE_END_POINT" value="" show="false"/>
+    <elementParameter field="TEXT" name="OOZIE_JOB_TRACKER_ENDPOINT" value="" show="false"/>
+    <elementParameter field="TEXT" name="OOZIE_END_POINT" value="" show="false"/>
+    <elementParameter field="CHECK" name="IMPLICITCONTEXT_USE_PROJECT_SETTINGS" value="true" show="false"/>
+    <elementParameter field="CHECK" name="STATANDLOG_USE_PROJECT_SETTINGS" value="true" show="false"/>
+    <elementParameter field="CHECK" name="MULTI_THREAD_EXECATION" value="true"/>
+    <elementParameter field="TEXT" name="PARALLELIZE_UNIT_SIZE" value="25000"/>
+    <elementParameter field="CHECK" name="IMPLICIT_TCONTEXTLOAD" value="false"/>
+    <elementParameter field="RADIO" name="FROM_FILE_FLAG_IMPLICIT_CONTEXT" value="false" show="false"/>
+    <elementParameter field="RADIO" name="FROM_DATABASE_FLAG_IMPLICIT_CONTEXT" value="false" show="false"/>
+    <elementParameter field="FILE" name="IMPLICIT_TCONTEXTLOAD_FILE" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="FIELDSEPARATOR" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TECHNICAL" name="PROPERTY_TYPE_IMPLICIT_CONTEXT:PROPERTY_TYPE" value="" show="false"/>
+    <elementParameter field="TECHNICAL" name="PROPERTY_TYPE_IMPLICIT_CONTEXT:REPOSITORY_PROPERTY_TYPE" value="" show="false"/>
+    <elementParameter field="CLOSED_LIST" name="DB_TYPE_IMPLICIT_CONTEXT" value="" show="false"/>
+    <elementParameter field="CLOSED_LIST" name="DB_VERSION_IMPLICIT_CONTEXT" value="" show="false"/>
+    <elementParameter field="TEXT" name="URL_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TABLE" name="DRIVER_JAR_IMPLICIT_CONTEXT" show="false"/>
+    <elementParameter field="TEXT" name="DRIVER_CLASS_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="HOST_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="PORT_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="DBNAME_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="LOCAL_SERVICE_NAME_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="PROPERTIES_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="SCHEMA_DB_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="USER_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS_IMPLICIT_CONTEXT" value="0RMsyjmybrE=" show="false"/>
+    <elementParameter field="FILE" name="DBFILE_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
+    <elementParameter field="DBTABLE" name="DBTABLE_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="QUERY_CONDITION_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
+    <elementParameter field="CLOSED_LIST" name="LOAD_NEW_VARIABLE" value="Warning" show="false"/>
+    <elementParameter field="CLOSED_LIST" name="NOT_LOAD_OLD_VARIABLE" value="Warning" show="false"/>
+    <elementParameter field="CHECK" name="PRINT_OPERATIONS" value="false" show="false"/>
+    <elementParameter field="CHECK" name="DISABLE_ERROR" value="false" show="false"/>
+    <elementParameter field="CHECK" name="DISABLE_WARNINGS" value="false" show="false"/>
+    <elementParameter field="CHECK" name="DISABLE_INFO" value="false" show="false"/>
+    <elementParameter field="CHECK" name="ON_STATCATCHER_FLAG" value="false"/>
+    <elementParameter field="CHECK" name="ON_LOGCATCHER_FLAG" value="false"/>
+    <elementParameter field="CHECK" name="ON_METERCATCHER_FLAG" value="false"/>
+    <elementParameter field="CHECK" name="ON_CONSOLE_FLAG" value="false" show="false"/>
+    <elementParameter field="CHECK" name="ON_FILES_FLAG" value="false" show="false"/>
+    <elementParameter field="DIRECTORY" name="FILE_PATH" value="&quot;C:/Users/Majum2p/workspace_work/.metadata&quot;" show="false"/>
+    <elementParameter field="TEXT" name="FILENAME_STATS" value="&quot;stats_file.txt&quot;" show="false"/>
+    <elementParameter field="TEXT" name="FILENAME_LOGS" value="&quot;logs_file.txt&quot;" show="false"/>
+    <elementParameter field="TEXT" name="FILENAME_METTER" value="&quot;meter_file.txt&quot;" show="false"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="ISO-8859-15" show="false"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15" show="false"/>
+    <elementParameter field="CHECK" name="ON_DATABASE_FLAG" value="false" show="false"/>
+    <elementParameter field="CLOSED_LIST" name="DB_TYPE" value="tJDBCOutput" show="false"/>
+    <elementParameter field="CLOSED_LIST" name="DB_VERSION" value="ORACLE_11" show="false"/>
+    <elementParameter field="TEXT" name="URL" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TABLE" name="DRIVER_JAR" show="false"/>
+    <elementParameter field="TEXT" name="DRIVER_CLASS" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="HOST" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="PORT" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="DATASOURCE" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="DBNAME" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="LOCAL_SERVICE_NAME" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="PROPERTIES" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="0RMsyjmybrE=" show="false"/>
+    <elementParameter field="FILE" name="DBFILE" value="&quot;&quot;" show="false"/>
+    <elementParameter field="DBTABLE" name="TABLE_STATS" value="&quot;&quot;" show="false"/>
+    <elementParameter field="DBTABLE" name="TABLE_LOGS" value="&quot;&quot;" show="false"/>
+    <elementParameter field="DBTABLE" name="TABLE_METER" value="&quot;&quot;" show="false"/>
+    <elementParameter field="CHECK" name="CATCH_RUNTIME_ERRORS" value="true" show="false"/>
+    <elementParameter field="CHECK" name="CATCH_USER_ERRORS" value="true" show="false"/>
+    <elementParameter field="CHECK" name="CATCH_USER_WARNING" value="true" show="false"/>
+    <elementParameter field="CHECK" name="CATCH_REALTIME_STATS" value="false" show="false"/>
+    <elementParameter field="TEXT" name="HEADERFOOTER_HEADERID" value="" show="false"/>
+    <elementParameter field="CHECK" name="HEADER_ENABLED" value="false" show="false"/>
+    <elementParameter field="TEXT" name="HEADER_LIBRARY" value="" show="false"/>
+    <elementParameter field="TEXT" name="HEADER_CODE" value="" show="false"/>
+    <elementParameter field="TEXT" name="HEADER_IMPORT" value="" show="false"/>
+    <elementParameter field="TEXT" name="HEADERFOOTER_FOOTERID" value="" show="false"/>
+    <elementParameter field="CHECK" name="FOOTER_ENABLED" value="false" show="false"/>
+    <elementParameter field="TEXT" name="FOOTER_LIBRARY" value="" show="false"/>
+    <elementParameter field="TEXT" name="FOOTER_CODE" value="" show="false"/>
+    <elementParameter field="TEXT" name="FOOTER_IMPORT" value="" show="false"/>
+    <routinesParameter id="_JP7oUFv1EeeSRus8KI9c-g" name="DQTechnical"/>
+    <routinesParameter id="_JPzsgFv1EeeSRus8KI9c-g" name="DataMasking"/>
+    <routinesParameter id="_JOF1QFv1EeeSRus8KI9c-g" name="DataOperation"/>
+    <routinesParameter id="_JP398Fv1EeeSRus8KI9c-g" name="DataQualityDependencies"/>
+    <routinesParameter id="_JP1hsFv1EeeSRus8KI9c-g" name="DataQuality"/>
+    <routinesParameter id="_JP6aMFv1EeeSRus8KI9c-g" name="DqStringHandling"/>
+    <routinesParameter id="_JPDekFv1EeeSRus8KI9c-g" name="Mathematical"/>
+    <routinesParameter id="_JPFTwFv1EeeSRus8KI9c-g" name="Numeric"/>
+    <routinesParameter id="_JPj04Fv1EeeSRus8KI9c-g" name="Relational"/>
+    <routinesParameter id="_JP9dgFv1EeeSRus8KI9c-g" name="SQLike"/>
+    <routinesParameter id="_JPpUcFv1EeeSRus8KI9c-g" name="StringHandling"/>
+    <routinesParameter id="_JPrJoFv1EeeSRus8KI9c-g" name="TalendDataGenerator"/>
+    <routinesParameter id="_JPs-0Fv1EeeSRus8KI9c-g" name="TalendDate"/>
+    <routinesParameter id="_JPu0AFv1EeeSRus8KI9c-g" name="TalendString"/>
+    <routinesParameter id="_JXRDQN5dEeaPFMXnQZ1dSQ" name="StandardizerowTstandardizerow_1"/>
+    <routinesParameter id="_IN8ZwN8YEeaQ2ZcYtth_VQ" name="Unstructured_data_standardizerowTstandardizerow_1"/>
+    <routinesParameter id="_XB7ckFvJEeehidvvWhRXqw" name="Dynamic_Delta_Load"/>
+    <routinesParameter id="_DqYoQFZnEeelGvR7sOY3Wg" name="Dynamic_Delta_Load_v1"/>
+    <routinesParameter id="_EC0_YNDOEeamqdUoLK39Ug" name="GenerateDate"/>
+    <routinesParameter id="_kmsmAMNKEeW3AMObSTyzLw" name="TracabUtils"/>
+    <routinesParameter id="_rSdr4BjoEeaXZpc63th25Q" name="myRoutine"/>
+  </parameters>
+  <node componentName="tRunJob" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="832" posY="128">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_1" show="false"/>
+    <elementParameter field="CHECK" name="USE_DYNAMIC_JOB" value="false"/>
+    <elementParameter field="TEXT" name="CONTEXT_JOB" value="" show="false"/>
+    <elementParameter field="PROCESS_TYPE" name="PROCESS" value="PRE_JOB"/>
+    <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_CONTEXT" value="Default"/>
+    <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_PROCESS" value="_hgsGQBAjEempIswtahN56g"/>
+    <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_VERSION" value="Latest"/>
+    <elementParameter field="TEXT" name="CONTEXT_NAME" value="Default" show="false"/>
+    <elementParameter field="CHECK" name="USE_INDEPENDENT_PROCESS" value="false"/>
+    <elementParameter field="CHECK" name="DIE_ON_CHILD_ERROR" value="true"/>
+    <elementParameter field="CHECK" name="TRANSMIT_WHOLE_CONTEXT" value="true"/>
+    <elementParameter field="TABLE" name="CONTEXTPARAMS">
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="taskname"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.taskname"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="tablename"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.targetschema+&quot;.&quot;+context.tablename"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="filename"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.filename"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="metadataschema"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.metadataschema"/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="PROPAGATE_CHILD_RESULT" value="false"/>
+    <elementParameter field="CHECK" name="PRINT_PARAMETER" value="false"/>
+    <elementParameter field="CHECK" name="TRANSMIT_ORIGINAL_CONTEXT" value="true" show="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="prejob"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tRunJob_1">
+      <column comment="" key="false" length="-1" name="lastruntime" nullable="true" pattern="&quot;yyyy-MM-dd hh:MM:ss&quot;" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="1024" posY="128">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_1" show="false"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="context.lastruntime=input_row.lastruntime;&#xA;System.out.println(&quot;last run time : &quot;+context.lastruntime);&#xA;//System.out.println( TalendDate.getCurrentDate().toString());&#xA;&#xA;/*Date date = new Date();&#xA;SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy-MM-dd h:mm:ss&quot;);&#xA;String formattedDate = sdf.format(date);&#xA;System.out.println(formattedDate);&#xA;context.currentdate = formattedDate;*/&#xA;"/>
+    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tJavaRow_1"/>
+  </node>
+  <node componentName="tRedshiftConnection" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="96" posY="128">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRedshiftConnection_1" show="false"/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" value="_wQ_XoEpUEemFhoTESGOWQg" show="false"/>
+    <elementParameter field="TEXT" name="HOST" value="context.CDP_Redshift_ETL_Connection_History_Server"/>
+    <elementParameter field="TEXT" name="TYPE" value="REDSHIFT" show="false"/>
+    <elementParameter field="TEXT" name="PORT" value="context.CDP_Redshift_ETL_Connection_History_Port"/>
+    <elementParameter field="TEXT" name="DBNAME" value="context.CDP_Redshift_ETL_Connection_History_Database"/>
+    <elementParameter field="TEXT" name="SCHEMA_DB" value="context.CDP_Redshift_ETL_Connection_History_Schema"/>
+    <elementParameter field="TEXT" name="USER" value="context.CDP_Redshift_ETL_Connection_History_Login"/>
+    <elementParameter field="PASSWORD" name="PASS" value="8pW6Nmy2kufDmV0LLEFMslPUhmftN2AjJhgoDHxywaU0MAgFM4UhgcyFAsPQLOnYyoeQwVw5ixs="/>
+    <elementParameter field="TEXT" name="PROPERTIES" value="context.CDP_Redshift_ETL_Connection_History_AdditionalParams"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;" show="false"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="CHECK" name="USE_SHARED_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="SHARED_CONNECTION_NAME" value="" show="false"/>
+    <elementParameter field="CHECK" name="AUTO_COMMIT" value="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="normalised_connection"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+  </node>
+  <node componentName="tRedshiftCommit" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1088" posY="256">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRedshiftCommit_1" show="false"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tRedshiftConnection_1"/>
+    <elementParameter field="CHECK" name="CLOSE" value="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="commit"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tRedshiftCommit_1"/>
+  </node>
+  <node componentName="tRunJob" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="1216" posY="256">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_2" show="false"/>
+    <elementParameter field="CHECK" name="USE_DYNAMIC_JOB" value="false"/>
+    <elementParameter field="TEXT" name="CONTEXT_JOB" value="" show="false"/>
+    <elementParameter field="PROCESS_TYPE" name="PROCESS" value="POST_JOB"/>
+    <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_CONTEXT" value="Default"/>
+    <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_PROCESS" value="_GT_2ABAkEempIswtahN56g"/>
+    <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_VERSION" value="Latest"/>
+    <elementParameter field="TEXT" name="CONTEXT_NAME" value="Default" show="false"/>
+    <elementParameter field="CHECK" name="USE_INDEPENDENT_PROCESS" value="false"/>
+    <elementParameter field="CHECK" name="DIE_ON_CHILD_ERROR" value="true"/>
+    <elementParameter field="CHECK" name="TRANSMIT_WHOLE_CONTEXT" value="true"/>
+    <elementParameter field="TABLE" name="CONTEXTPARAMS">
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="taskname"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.taskname"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="filename"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.filename"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="tablename"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.targetschema+&quot;.&quot;+context.tablename"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="insertcount"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.insertcount"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="updatecount"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.updatecount"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="deletecount"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.deletecount"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="metadataschema"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.metadataschema"/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="PROPAGATE_CHILD_RESULT" value="false"/>
+    <elementParameter field="CHECK" name="PRINT_PARAMETER" value="false"/>
+    <elementParameter field="CHECK" name="TRANSMIT_ORIGINAL_CONTEXT" value="true" show="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="postjob"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tRunJob_2"/>
+  </node>
+  <node componentName="tRedshiftRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="256" posY="256">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRedshiftRow_1" show="false"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tRedshiftConnection_1"/>
+    <elementParameter field="TEXT" name="HOST" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="PORT" value="&quot;5439&quot;" show="false"/>
+    <elementParameter field="TEXT" name="DBNAME" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="TYPE" value="Redshift" show="false"/>
+    <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="0RMsyjmybrE=" show="false"/>
+    <elementParameter field="TEXT" name="PROPERTIES" value="&quot;&quot;" show="false"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;&quot;"/>
+    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value="" show="false"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#xD;&#xA;Update &quot;+context.targetschema+&quot;.dimsalesoffer_1 set &#xD;&#xA;RecordEffectiveEndDate= dateadd(second,-1,cast('&quot;+context.datadate+&quot;' as timestamp)),&#xD;&#xA;currentrecordindicator=0,&#xD;&#xA;ModifiedBy=a.ModifiedBy,&#xD;&#xA;ModifiedOn=a.ModifiedOn&#xD;&#xA;from &#xD;&#xA;(select  salesofferidentifier,&#xD;&#xA;  salesoffercode,&#xD;&#xA;  salesofferhash,&#xD;&#xA;  salesoffereffectivefromdatetime,&#xD;&#xA;  salesoffereffectivetodatetime,&#xD;&#xA;  salesofferrewardamount,&#xD;&#xA;  salesoffercustomerjourneytypetext,&#xD;&#xA;  salesofferjourneyclassification,&#xD;&#xA;  salesofferbilldescription,&#xD;&#xA;  salesofferrewardtypetext,&#xD;&#xA;  salesoffertriggerpoint,&#xD;&#xA;  salesoffertriggeroffset,&#xD;&#xA;  salesofferoffercap,&#xD;&#xA;  salesofferrewardfrequencytypecode,&#xD;&#xA;  salesofferrewardfrequency,&#xD;&#xA;  salesofferbusinessdescription,&#xD;&#xA;  salesofferterminationindicator,&#xD;&#xA;  salesofferexplanatorytext,&#xD;&#xA;  salesofferexclusivetariffindicator,&#xD;&#xA;  salesofferfeaturetabtext,&#xD;&#xA;  salesoffertermsandconditionstext,&#xD;&#xA;  salesoffersuccessfulcustomerinputtext,&#xD;&#xA;  salesoffertermsandconditionsurl,&#xD;&#xA;  salesvouchercongratulatorytext,&#xD;&#xA;  SalesVoucherNextStepText,&#xD;&#xA;  salesvouchercaveattext,&#xD;&#xA;  salesvoucherprovidername,&#xD;&#xA;  salesvouchercorrespondenceidentifier,&#xD;&#xA;  fueltype,&#xD;&#xA;  fueltypename,&#xD;&#xA;  fueltypedescription,&#xD;&#xA;  journeytype,&#xD;&#xA;  journeydescription,&#xD;&#xA;  saleschannelcode,&#xD;&#xA;  saleschanneldescription,&#xD;&#xA;  currentpaymenttypecode,&#xD;&#xA;  currentpaymenttypedescription,&#xD;&#xA;  desiredpaymenttypecode,&#xD;&#xA;  desiredpaymenttypedescription,&#xD;&#xA;  recordeffectivestartdate,&#xD;&#xA;  recordeffectiveenddate,&#xD;&#xA;  currentrecordindicator,&#xD;&#xA;  sourcesystemidentifier,&#xD;&#xA;  '&quot;+context.taskname+&quot;' as modifiedby,&#xD;&#xA;  getdate() as modifiedon&#xD;&#xA;from &quot;+context.targetschema+&quot;.dimsalesoffer_work_1&#xD;&#xA;) a&#xD;&#xA;inner join &quot;+context.targetschema+&quot;.dimsalesoffer_1 b on (a.salesofferidentifier = b.salesofferidentifier &#xD;&#xA;and a.SourceSystemIdentifier = b.SourceSystemIdentifier and b.currentrecordindicator = 1)&#xD;&#xA;where (&#xD;&#xA;isnull(b.salesoffercode,'X') &lt;> isnull(a.salesoffercode,'X')&#xD;&#xA;or  isnull(b.salesofferhash,'X') &lt;> isnull(a.salesofferhash,'X')&#xD;&#xA;or  isnull(b.salesoffereffectivefromdatetime,'1-Jan-1800') &lt;> isnull(a.salesoffereffectivefromdatetime,'1-Jan-1800')&#xD;&#xA;or  isnull(b.salesoffereffectivetodatetime,'1-Jan-1800') &lt;> isnull(a.salesoffereffectivetodatetime,'1-Jan-1800')&#xD;&#xA;or  isnull(b.salesofferrewardamount,'-1') &lt;> isnull(a.salesofferrewardamount,'-1')&#xD;&#xA;or  isnull(b.salesoffercustomerjourneytypetext,'X') &lt;> isnull(a.salesoffercustomerjourneytypetext,'X')&#xD;&#xA;or  isnull(b.salesofferjourneyclassification,'X') &lt;> isnull(b.salesofferjourneyclassification,'X')&#xD;&#xA;or  isnull(b.salesofferbilldescription,'X') &lt;> isnull(a.salesofferbilldescription,'X')&#xD;&#xA;or  isnull(b.salesofferrewardtypetext,'X') &lt;> isnull(a.salesofferrewardtypetext,'X')&#xD;&#xA;or  isnull(b.salesoffertriggerpoint,'X') &lt;> isnull(a.salesoffertriggerpoint,'X')&#xD;&#xA;or  isnull(b.salesoffertriggeroffset,'-1') &lt;> isnull(a.salesoffertriggeroffset,'-1')&#xD;&#xA;or  isnull(b.salesofferoffercap,'-1') &lt;> isnull(a.salesofferoffercap,'-1')&#xD;&#xA;or  isnull(b.salesofferrewardfrequencytypecode,'X') &lt;> isnull(a.salesofferrewardfrequencytypecode,'X')&#xD;&#xA;or  isnull(b.salesofferrewardfrequency,'-1') &lt;> isnull(a.salesofferrewardfrequency,'-1')&#xD;&#xA;or  isnull(b.salesofferbusinessdescription,'X') &lt;> isnull(a.salesofferbusinessdescription,'X')&#xD;&#xA;or  isnull(b.salesofferterminationindicator,'-1') &lt;> isnull(a.salesofferterminationindicator,'-1')&#xD;&#xA;or  isnull(b.salesofferexplanatorytext,'X') &lt;> isnull(a.salesofferexplanatorytext,'X')&#xD;&#xA;or  isnull(b.salesofferexclusivetariffindicator,'-1') &lt;> isnull(a.salesofferexclusivetariffindicator,'-1')&#xD;&#xA;or  isnull(b.salesofferfeaturetabtext,'X') &lt;> isnull(a.salesofferfeaturetabtext,'X')&#xD;&#xA;or  isnull(b.salesoffertermsandconditionstext,'X') &lt;> isnull(a.salesoffertermsandconditionstext,'X')&#xD;&#xA;or  isnull(b.salesoffersuccessfulcustomerinputtext,'X') &lt;> isnull(a.salesoffersuccessfulcustomerinputtext,'X')&#xD;&#xA;or  isnull(b.salesoffertermsandconditionsurl,'X') &lt;> isnull(a.salesoffertermsandconditionsurl,'X')&#xD;&#xA;or  isnull(b.salesvouchercongratulatorytext,'X') &lt;> isnull(a.salesvouchercongratulatorytext,'X')&#xD;&#xA;or  isnull(b.SalesVoucherNextStepText,'X') &lt;>  isnull(a.SalesVoucherNextStepText,'X')&#xD;&#xA;or  isnull(b.salesvouchercaveattext,'X') &lt;> isnull(a.salesvouchercaveattext,'X')&#xD;&#xA;or  isnull(b.salesvoucherprovidername,'X') &lt;> isnull(a.salesvoucherprovidername,'X')&#xD;&#xA;or  isnull(b.salesvouchercorrespondenceidentifier,'X') &lt;> isnull(a.salesvouchercorrespondenceidentifier,'X')&#xD;&#xA;or  isnull(b.fueltype,'X') &lt;> isnull(a.fueltype,'X') &#xD;&#xA;or  isnull(b.fueltypename,'X') &lt;> isnull(a.fueltypename,'X')&#xD;&#xA;or  isnull(b.fueltypedescription,'X') &lt;> isnull(a.fueltypedescription,'X')&#xD;&#xA;or  isnull(b.journeytype,'X') &lt;> isnull(a.journeytype,'X')&#xD;&#xA;or  isnull(b.journeydescription,'X') &lt;> isnull(a.journeydescription,'X')&#xD;&#xA;or  isnull(b.saleschannelcode,'X') &lt;> isnull(a.saleschannelcode,'X')&#xD;&#xA;or  isnull(b.saleschanneldescription,'X') &lt;> isnull(a.saleschanneldescription,'X')&#xD;&#xA;or  isnull(b.currentpaymenttypecode,'X') &lt;>  isnull(a.currentpaymenttypecode,'X')&#xD;&#xA;or  isnull(b.currentpaymenttypedescription,'X') &lt;> isnull(a.currentpaymenttypedescription,'X')&#xD;&#xA;or  isnull(b.desiredpaymenttypecode,'X') &lt;> isnull(a.desiredpaymenttypecode,'X')&#xD;&#xA;or  isnull(b.desiredpaymenttypedescription,'X') &lt;> isnull(a.desiredpaymenttypedescription,'X')&#xD;&#xA;)&#xD;&#xA;&quot;"/>
+    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="true"/>
+    <elementParameter field="CHECK" name="PROPAGATE_RECORD_SET" value="false"/>
+    <elementParameter field="COLUMN_LIST" name="RECORD_SET_COLUMN" value="" show="false"/>
+    <elementParameter field="CHECK" name="USE_PREPAREDSTATEMENT" value="false"/>
+    <elementParameter field="TABLE" name="SET_PREPAREDSTATEMENT_PARAMETERS" show="false"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;" show="false"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="TEXT" name="COMMIT_EVERY" value="10000" show="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="SCD2_Update"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tRedshiftRow_1"/>
+    <metadata connector="REJECT" name="REJECT">
+      <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" precision="0" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tRedshiftInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="384" posY="256">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRedshiftInput_1" show="false"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tRedshiftConnection_1"/>
+    <elementParameter field="TEXT" name="HOST" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="TYPE" value="Redshift" show="false"/>
+    <elementParameter field="TEXT" name="PORT" value="&quot;5439&quot;" show="false"/>
+    <elementParameter field="TEXT" name="DBNAME" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="0RMsyjmybrE=" show="false"/>
+    <elementParameter field="TEXT" name="PROPERTIES" value="&quot;&quot;" show="false"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;&quot;"/>
+    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value="" show="false"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
+    <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;select isnull(sum(rows),0) from stl_insert where query = pg_last_query_id()&quot;"/>
+    <elementParameter field="MAPPING_TYPE" name="MAPPING" value="redshift_id" show="false"/>
+    <elementParameter field="FILE" name="LOG_FILE" value="&quot;&quot;"/>
+    <elementParameter field="CLOSED_LIST" name="LOG_LEVEL" value="1"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;" show="false"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="CHECK" name="USE_CURSOR" value="false"/>
+    <elementParameter field="TEXT" name="CURSOR_SIZE" value="1000" show="false"/>
+    <elementParameter field="CHECK" name="TRIM_ALL_COLUMN" value="false"/>
+    <elementParameter field="TABLE" name="TRIM_COLUMN">
+      <elementValue elementRef="SCHEMA_COLUMN" value="update_count"/>
+      <elementValue elementRef="TRIM" value="false"/>
+    </elementParameter>
+    <elementParameter field="TEXT" name="LABEL" value="update_Count"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tRedshiftInput_1">
+      <column comment="" key="false" length="10" name="update_count" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="10" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="384" posY="352">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_3" show="false"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="//context.updatecount = ((Integer)globalMap.get(&quot;tRedshiftInput_5_NB_LINE&quot;)).toString();&#xA;context.updatecount_SCD2 = input_row.update_count;&#xA;context.updatecount = String.valueOf(Integer.valueOf(input_row.update_count));&#xA;System.out.println(&quot;SCD2: &quot;+context.updatecount_SCD2);"/>
+    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="TEXT" name="LABEL" value="set_update_count"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tJavaRow_3"/>
+  </node>
+  <node componentName="tRedshiftRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="800" posY="256">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRedshiftRow_3" show="false"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tRedshiftConnection_1"/>
+    <elementParameter field="TEXT" name="HOST" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="PORT" value="&quot;5439&quot;" show="false"/>
+    <elementParameter field="TEXT" name="DBNAME" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="TYPE" value="Redshift" show="false"/>
+    <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="0RMsyjmybrE=" show="false"/>
+    <elementParameter field="TEXT" name="PROPERTIES" value="&quot;&quot;" show="false"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;&quot;"/>
+    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value="" show="false"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#xD;&#xA;insert into &quot;+context.targetschema+&quot;.dimsalesoffer_1&#xD;&#xA;( &#xD;&#xA;  salesofferidentifier,&#xD;&#xA;  salesoffercode,&#xD;&#xA;  salesofferhash,&#xD;&#xA;  salesoffereffectivefromdatetime,&#xD;&#xA;  salesoffereffectivetodatetime,&#xD;&#xA;  salesofferrewardamount,&#xD;&#xA;  salesoffercustomerjourneytypetext,&#xD;&#xA;  salesofferjourneyclassification,&#xD;&#xA;  salesofferbilldescription,&#xD;&#xA;  salesofferrewardtypetext,&#xD;&#xA;  salesoffertriggerpoint,&#xD;&#xA;  salesoffertriggeroffset,&#xD;&#xA;  salesofferoffercap,&#xD;&#xA;  salesofferrewardfrequencytypecode,&#xD;&#xA;  salesofferrewardfrequency,&#xD;&#xA;  salesofferbusinessdescription,&#xD;&#xA;  salesofferterminationindicator,&#xD;&#xA;  salesofferexplanatorytext,&#xD;&#xA;  salesofferexclusivetariffindicator,&#xD;&#xA;  salesofferfeaturetabtext,&#xD;&#xA;  salesoffertermsandconditionstext,&#xD;&#xA;  salesoffersuccessfulcustomerinputtext,&#xD;&#xA;  salesoffertermsandconditionsurl,&#xD;&#xA;  salesvouchercongratulatorytext,&#xD;&#xA;  SalesVoucherNextStepText,&#xD;&#xA;  salesvouchercaveattext,&#xD;&#xA;  salesvoucherprovidername,&#xD;&#xA;  salesvouchercorrespondenceidentifier,&#xD;&#xA;  fueltype,&#xD;&#xA;  fueltypename,&#xD;&#xA;  fueltypedescription,&#xD;&#xA;  journeytype,&#xD;&#xA;  journeydescription,&#xD;&#xA;  saleschannelcode,&#xD;&#xA;  saleschanneldescription,&#xD;&#xA;  currentpaymenttypecode,&#xD;&#xA;  currentpaymenttypedescription,&#xD;&#xA;  desiredpaymenttypecode,&#xD;&#xA;  desiredpaymenttypedescription,&#xD;&#xA;  recordeffectivestartdate,&#xD;&#xA;  recordeffectiveenddate,&#xD;&#xA;  currentrecordindicator,&#xD;&#xA;  sourcesystemidentifier,&#xD;&#xA;  createdby,&#xD;&#xA;  createdon,&#xD;&#xA;  modifiedby,&#xD;&#xA;  modifiedon&#xD;&#xA;)&#xD;&#xA;select a.* from &#xD;&#xA;(select salesofferidentifier,&#xD;&#xA;  salesoffercode,&#xD;&#xA;  salesofferhash,&#xD;&#xA;  salesoffereffectivefromdatetime,&#xD;&#xA;  salesoffereffectivetodatetime,&#xD;&#xA;  salesofferrewardamount,&#xD;&#xA;  salesoffercustomerjourneytypetext,&#xD;&#xA;  salesofferjourneyclassification,&#xD;&#xA;  salesofferbilldescription,&#xD;&#xA;  salesofferrewardtypetext,&#xD;&#xA;  salesoffertriggerpoint,&#xD;&#xA;  salesoffertriggeroffset,&#xD;&#xA;  salesofferoffercap,&#xD;&#xA;  salesofferrewardfrequencytypecode,&#xD;&#xA;  salesofferrewardfrequency,&#xD;&#xA;  salesofferbusinessdescription,&#xD;&#xA;  salesofferterminationindicator,&#xD;&#xA;  salesofferexplanatorytext,&#xD;&#xA;  salesofferexclusivetariffindicator,&#xD;&#xA;  salesofferfeaturetabtext,&#xD;&#xA;  salesoffertermsandconditionstext,&#xD;&#xA;  salesoffersuccessfulcustomerinputtext,&#xD;&#xA;  salesoffertermsandconditionsurl,&#xD;&#xA;  salesvouchercongratulatorytext,&#xD;&#xA; SalesVoucherNextStepText,&#xD;&#xA;  salesvouchercaveattext,&#xD;&#xA;  salesvoucherprovidername,&#xD;&#xA;  salesvouchercorrespondenceidentifier,&#xD;&#xA;  fueltype,&#xD;&#xA;  fueltypename,&#xD;&#xA;  fueltypedescription,&#xD;&#xA;  journeytype,&#xD;&#xA;  journeydescription,&#xD;&#xA;  saleschannelcode,&#xD;&#xA;  saleschanneldescription,&#xD;&#xA;  currentpaymenttypecode,&#xD;&#xA;  currentpaymenttypedescription,&#xD;&#xA;  desiredpaymenttypecode,&#xD;&#xA;  desiredpaymenttypedescription,&#xD;&#xA;  recordeffectivestartdate,&#xD;&#xA;  recordeffectiveenddate,&#xD;&#xA;  currentrecordindicator,&#xD;&#xA;  6 as sourcesystemidentifier,&#xD;&#xA;  '&quot;+context.taskname+&quot;' as createdby,&#xD;&#xA;  getdate() as createdon,&#xD;&#xA;  '&quot;+context.taskname+&quot;' as modifiedby,&#xD;&#xA;  getdate() as modifiedon&#xD;&#xA;from &quot;+context.targetschema+&quot;.dimsalesoffer_work_1&#xD;&#xA;) a&#xD;&#xA;left outer join &quot;+context.targetschema+&quot;.dimsalesoffer_1 b on (a.salesofferidentifier = b.salesofferidentifier and a.SourceSystemIdentifier = b.SourceSystemIdentifier &#xD;&#xA;and b.currentrecordindicator =1)&#xD;&#xA;where b.salesofferidentifier is null and b.SourceSystemIdentifier is null&quot;"/>
+    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="true"/>
+    <elementParameter field="CHECK" name="PROPAGATE_RECORD_SET" value="false"/>
+    <elementParameter field="COLUMN_LIST" name="RECORD_SET_COLUMN" value="" show="false"/>
+    <elementParameter field="CHECK" name="USE_PREPAREDSTATEMENT" value="false"/>
+    <elementParameter field="TABLE" name="SET_PREPAREDSTATEMENT_PARAMETERS" show="false"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;" show="false"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="TEXT" name="COMMIT_EVERY" value="10000" show="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="Insert"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tRedshiftRow_3"/>
+    <metadata connector="REJECT" name="REJECT">
+      <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" precision="0" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tRedshiftInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="928" posY="256">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRedshiftInput_3" show="false"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tRedshiftConnection_1"/>
+    <elementParameter field="TEXT" name="HOST" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="TYPE" value="Redshift" show="false"/>
+    <elementParameter field="TEXT" name="PORT" value="&quot;5439&quot;" show="false"/>
+    <elementParameter field="TEXT" name="DBNAME" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="0RMsyjmybrE=" show="false"/>
+    <elementParameter field="TEXT" name="PROPERTIES" value="&quot;&quot;" show="false"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;&quot;"/>
+    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value="" show="false"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
+    <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;select isnull(sum(rows),0)  from stl_insert where query = (select max(query) from svl_qlog where upper(substring) like upper('%&quot;+context.tablename+&quot;%'))&quot;"/>
+    <elementParameter field="MAPPING_TYPE" name="MAPPING" value="redshift_id" show="false"/>
+    <elementParameter field="FILE" name="LOG_FILE" value="&quot;&quot;"/>
+    <elementParameter field="CLOSED_LIST" name="LOG_LEVEL" value="1"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;" show="false"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="CHECK" name="USE_CURSOR" value="false"/>
+    <elementParameter field="TEXT" name="CURSOR_SIZE" value="1000" show="false"/>
+    <elementParameter field="CHECK" name="TRIM_ALL_COLUMN" value="false"/>
+    <elementParameter field="TABLE" name="TRIM_COLUMN">
+      <elementValue elementRef="SCHEMA_COLUMN" value="insert_count"/>
+      <elementValue elementRef="TRIM" value="false"/>
+    </elementParameter>
+    <elementParameter field="TEXT" name="LABEL" value="Insert_Count"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tRedshiftInput_3">
+      <column comment="" key="false" length="-1" name="insert_count" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="928" posY="352">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_5" show="false"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="//context.insertcount = ((Integer)globalMap.get(&quot;tRedshiftInput_6_NB_LINE&quot;)).toString();&#xA;//context.insertcount = input_row.insert_count;&#xA;context.insertcount = String.valueOf(Integer.valueOf(input_row.insert_count));&#xA;&#xA;System.out.println(&quot;Insert: &quot; +context.insertcount);&#xA;System.out.println(&quot;Delete: &quot; +context.deletecount);&#xA;//System.out.println(input_row.query);&#xA;"/>
+    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="TEXT" name="LABEL" value="set_insert_count"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tJavaRow_5"/>
+  </node>
+  <node componentName="tRedshiftRow" componentVersion="0.102" offsetLabelX="-3" offsetLabelY="-6" posX="96" posY="256">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRedshiftRow_5" show="false"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tRedshiftConnection_1"/>
+    <elementParameter field="TEXT" name="HOST" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="PORT" value="&quot;5439&quot;" show="false"/>
+    <elementParameter field="TEXT" name="DBNAME" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="TYPE" value="Redshift" show="false"/>
+    <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="0RMsyjmybrE=" show="false"/>
+    <elementParameter field="TEXT" name="PROPERTIES" value="&quot;&quot;" show="false"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;&quot;"/>
+    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value="" show="false"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#xD;&#xA;TRUNCATE TABLE &quot;+context.targetschema+&quot;.dimsalesoffer_work_1;&#xD;&#xA;INSERT INTO &quot;+context.targetschema+&quot;.dimsalesoffer_work_1&#xD;&#xA;(&#xD;&#xA;  salesofferidentifier,&#xD;&#xA;  salesoffercode,&#xD;&#xA;  salesofferhash,&#xD;&#xA;  salesoffereffectivefromdatetime,&#xD;&#xA;  salesoffereffectivetodatetime,&#xD;&#xA;  salesofferrewardamount,&#xD;&#xA;  salesoffercustomerjourneytypetext,&#xD;&#xA;  salesofferjourneyclassification,&#xD;&#xA;  salesofferbilldescription,&#xD;&#xA;  salesofferrewardtypetext,&#xD;&#xA;  salesoffertriggerpoint,&#xD;&#xA;  salesoffertriggeroffset,&#xD;&#xA;  salesofferoffercap,&#xD;&#xA;  salesofferrewardfrequencytypecode,&#xD;&#xA;  salesofferrewardfrequency,&#xD;&#xA;  salesofferbusinessdescription,&#xD;&#xA;  salesofferterminationindicator,&#xD;&#xA;  salesofferexplanatorytext,&#xD;&#xA;  salesofferexclusivetariffindicator,&#xD;&#xA;  salesofferfeaturetabtext,&#xD;&#xA;  salesoffertermsandconditionstext,&#xD;&#xA;  salesoffersuccessfulcustomerinputtext,&#xD;&#xA;  salesoffertermsandconditionsurl,&#xD;&#xA;  salesvouchercongratulatorytext,&#xD;&#xA;  SalesVoucherNextStepText,&#xD;&#xA;  salesvouchercaveattext,&#xD;&#xA;  salesvoucherprovidername,&#xD;&#xA;  salesvouchercorrespondenceidentifier,&#xD;&#xA;  fueltype,&#xD;&#xA;  fueltypename,&#xD;&#xA;  fueltypedescription,&#xD;&#xA;  journeytype,&#xD;&#xA;  journeydescription,&#xD;&#xA;  saleschannelcode,&#xD;&#xA;  saleschanneldescription,&#xD;&#xA;  currentpaymenttypecode,&#xD;&#xA;  currentpaymenttypedescription,&#xD;&#xA;  desiredpaymenttypecode,&#xD;&#xA;  desiredpaymenttypedescription,&#xD;&#xA;  recordeffectivestartdate,&#xD;&#xA;  recordeffectiveenddate,&#xD;&#xA;  currentrecordindicator,&#xD;&#xA;  sourcesystemidentifier,&#xD;&#xA;  createdby,&#xD;&#xA;  createdon,&#xD;&#xA;  modifiedby,&#xD;&#xA;  modifiedon&#xD;&#xA;)&#xD;&#xA;SELECT a.* from (&#xD;&#xA;select s.salesofferidentifier as salesofferidentifier,&#xD;&#xA;s.SalesOfferCode as SalesOfferCode,&#xD;&#xA;s.SalesOfferHash as SalesOfferHash,&#xD;&#xA;s.SalesOfferEffectiveFromDateTime as SalesOfferEffectiveFromDateTime,&#xD;&#xA;s.SalesOfferEffectiveToDateTime as SalesOfferEffectiveToDateTime,&#xD;&#xA;s.SalesOfferRewardAmount as SalesOfferRewardAmount,&#xD;&#xA;s.SalesOfferCustomerJourneyTypeText as SalesOfferCustomerJourneyTypeText,&#xD;&#xA;s.SalesOfferJourneyClassification as SalesOfferJourneyClassification,&#xD;&#xA;s.SalesOfferBillDescription as SalesOfferBillDescription,&#xD;&#xA;s.SalesOfferRewardTypeText as SalesOfferRewardTypeText,&#xD;&#xA;s.SalesOfferTriggerPoint as SalesOfferTriggerPoint,&#xD;&#xA;s.SalesOfferTriggerOffset as SalesOfferTriggerOffset,&#xD;&#xA;s.SalesOfferOfferCap as SalesOfferOfferCap,&#xD;&#xA;d1.SourceCode as SalesOfferRewardFrequencyTypeCode,&#xD;&#xA;s.SalesOfferRewardFrequency as SalesOfferRewardFrequency,&#xD;&#xA;s.SalesOfferBusinessDescription as SalesOfferBusinessDescription,&#xD;&#xA;s.SalesOfferTerminationIndicator as SalesOfferTerminationIndicator,&#xD;&#xA;s.SalesOfferExplanatoryText as SalesOfferExplanatoryText,&#xD;&#xA;s.SalesOfferExclusiveTariffIndicator as SalesOfferExclusiveTariffIndicator,&#xD;&#xA;s.SalesOfferFeatureTabText as SalesOfferFeatureTabText,&#xD;&#xA;s.SalesOfferTermsAndConditionsText as SalesOfferTermsAndConditionsText,&#xD;&#xA;s.salesoffersuccessfullcustomerinputtext as salesoffersuccessfulcustomerinputtext, &#xD;&#xA;s.SalesOfferTermsAndConditionsURL as SalesOfferTermsAndConditionsURL, &#xD;&#xA;sv.SalesVoucherCongratulatoryText as SalesVoucherCongratulatoryText,&#xD;&#xA;sv.SalesVoucherNextStepText as SalesVoucherNextStepText,&#xD;&#xA;sv.SalesVoucherCaveatText as SalesVoucherCaveatText,&#xD;&#xA;sv.SalesVoucherProviderName as SalesVoucherProviderName,&#xD;&#xA;sv.SalesVoucherCorrespondenceIdentifier as SalesVoucherCorrespondenceIdentifier,&#xD;&#xA;forfueltype.sourcecode as FuelType,&#xD;&#xA;forfueltypedesc.sourcedescription   as FuelTypeName,&#xD;&#xA;forfueltypedesc.sourcedescription as FuelTypeDescription,&#xD;&#xA;s.SalesOfferCustomerJourneyTypeText as JourneyType,&#xD;&#xA;d2.sourcedescription as JourneyDescription,&#xD;&#xA;forsaleschanneltype.sourcecode as SalesChannelCode,&#xD;&#xA;forsaleschanneltypedesc.sourcedescription as SalesChannelDescription,&#xD;&#xA;forcurrentpaymenttype.sourcecode as CurrentPaymentTypeCode,&#xD;&#xA;forcurrentpaymenttypedesc.sourcedescription as CurrentPaymentTypeDescription,&#xD;&#xA;fordesiredpaymenttype.sourcecode as DesiredPaymentTypeCode,&#xD;&#xA;fordesiredpaymenttypedesc.sourcedescription as DesiredPaymentTypeDescription,&#xD;&#xA;cast('&quot;+context.datadate+&quot;' as timestamp) as RecordEffectiveStartDate,  &#xD;&#xA;cast('9999-12-31 23:59:59' as timestamp) as RecordEffectiveEndDate,&#xD;&#xA;1 as CurrentRecordIndicator,&#xD;&#xA;6 as SourceSystemIdentifier,&#xD;&#xA;'&quot;+context.taskname+&quot;' as createdby,&#xD;&#xA;getdate() as createdon,&#xD;&#xA;'&quot;+context.taskname+&quot;' as modifiedby,&#xD;&#xA;getdate() as modifiedon&#xD;&#xA;from &#xD;&#xA;&quot;+context.sourceschema+&quot;.SalesOfferCode_1 s&#xD;&#xA;left outer join &quot;+context.sourceschema+&quot;.SalesVoucher_1 sv on sv.fksalesofferidentifier = s.sksalesoffercodeidentifier&#xD;&#xA;--fueltype--&#xD;&#xA;left outer join (select fksalesofferidentifier, listagg(a.sourcecode,',') within group (order by a.sourcecode) as sourcecode from &#xD;&#xA;(&#xD;&#xA;(select sd.salesofferdeterminationvalue,fksalesofferidentifier from &quot;+context.sourceschema+&quot;.salesofferdetermination_1 sd&#xD;&#xA;inner join &quot;+context.sourceschema+&quot;.domaincodecrossreference d on d.domainreferencecode=sd.SalesOfferDeterminationTypeCode&#xD;&#xA;where d.DomainName = 'SalesOfferDeterminationTypeCode' and d.SourceSystemName ='RDS PRD ENGINE' and d.sourcecode='FuelType' &#xD;&#xA;and sd.modifiedon>= cast('&quot;+context.lastruntime+&quot;' as timestamp)&#xD;&#xA;group by sd.salesofferdeterminationvalue,fksalesofferidentifier order by fksalesofferidentifier) temp&#xD;&#xA;&#xD;&#xA;left outer join &quot;+context.sourceschema+&quot;.domaincodecrossreference d  on (temp.salesofferdeterminationvalue= d.sourcecode  and d.DomainName ='FuelType'&#xD;&#xA;and d.SourceSystemName ='RDS PRD ENGINE')&#xD;&#xA;) a &#xD;&#xA;group by fksalesofferidentifier )forfueltype on forfueltype.fksalesofferidentifier=sv.fksalesofferidentifier&#xD;&#xA;&#xD;&#xA;--fueltypename &amp; fueltypedescription--&#xD;&#xA;left outer join (select fksalesofferidentifier, listagg(a.sourcedescription,',') within group (order by a.sourcedescription) as sourcedescription from &#xD;&#xA;(&#xD;&#xA;(select sd.salesofferdeterminationvalue,fksalesofferidentifier from &quot;+context.sourceschema+&quot;.salesofferdetermination_1 sd&#xD;&#xA;inner join &quot;+context.sourceschema+&quot;.domaincodecrossreference d on d.domainreferencecode=sd.SalesOfferDeterminationTypeCode&#xD;&#xA;where d.DomainName = 'SalesOfferDeterminationTypeCode' and d.SourceSystemName ='RDS PRD ENGINE' and d.sourcecode='FuelType' &#xD;&#xA;and sd.modifiedon>= cast('&quot;+context.lastruntime+&quot;' as timestamp)&#xD;&#xA;group by sd.salesofferdeterminationvalue,fksalesofferidentifier order by fksalesofferidentifier) temp&#xD;&#xA;&#xD;&#xA;left outer join &quot;+context.sourceschema+&quot;.domaincodecrossreference d  on (temp.salesofferdeterminationvalue= d.sourcecode  and d.DomainName ='FuelType'&#xD;&#xA;and d.SourceSystemName ='RDS PRD ENGINE')&#xD;&#xA;) a &#xD;&#xA;group by fksalesofferidentifier )forfueltypedesc on forfueltypedesc.fksalesofferidentifier=sv.fksalesofferidentifier&#xD;&#xA;&#xD;&#xA;--SalesChannelCode--&#xD;&#xA;left outer join (select fksalesofferidentifier, listagg(a.sourcecode,',') within group (order by a.sourcecode) as sourcecode from &#xD;&#xA;(&#xD;&#xA;(select sd.salesofferdeterminationvalue,fksalesofferidentifier from &quot;+context.sourceschema+&quot;.salesofferdetermination_1 sd&#xD;&#xA;inner join &quot;+context.sourceschema+&quot;.domaincodecrossreference d on d.domainreferencecode=sd.SalesOfferDeterminationTypeCode&#xD;&#xA;where d.DomainName = 'SalesOfferDeterminationTypeCode' and d.SourceSystemName ='RDS PRD ENGINE' and d.sourcecode='ChannelEntryPoint'&#xD;&#xA;and sd.modifiedon>= cast('&quot;+context.lastruntime+&quot;' as timestamp)&#xD;&#xA;group by sd.salesofferdeterminationvalue,fksalesofferidentifier order by fksalesofferidentifier) temp&#xD;&#xA;&#xD;&#xA;left outer join &quot;+context.sourceschema+&quot;.domaincodecrossreference d  on (temp.salesofferdeterminationvalue= d.sourcecode  and d.DomainName ='ChannelEntryPoint'&#xD;&#xA;and d.SourceSystemName ='RDS PRD ENGINE')&#xD;&#xA;) a &#xD;&#xA;group by fksalesofferidentifier )forsaleschanneltype on forsaleschanneltype.fksalesofferidentifier=sv.fksalesofferidentifier&#xD;&#xA;&#xD;&#xA;--SalesChannelDescription&#xD;&#xA;left outer join (select fksalesofferidentifier, listagg(a.sourcedescription,',') within group (order by a.sourcedescription) as sourcedescription from &#xD;&#xA;(&#xD;&#xA;(select sd.salesofferdeterminationvalue,fksalesofferidentifier from &quot;+context.sourceschema+&quot;.salesofferdetermination_1 sd&#xD;&#xA;inner join &quot;+context.sourceschema+&quot;.domaincodecrossreference d on d.domainreferencecode=sd.SalesOfferDeterminationTypeCode&#xD;&#xA;where d.DomainName = 'SalesOfferDeterminationTypeCode' and d.SourceSystemName ='RDS PRD ENGINE' and d.sourcecode='ChannelEntryPoint'&#xD;&#xA;and sd.modifiedon>= cast('&quot;+context.lastruntime+&quot;' as timestamp)&#xD;&#xA;group by sd.salesofferdeterminationvalue,fksalesofferidentifier order by fksalesofferidentifier) temp&#xD;&#xA;&#xD;&#xA;left outer join &quot;+context.sourceschema+&quot;.domaincodecrossreference d  on (temp.salesofferdeterminationvalue= d.sourcecode  and d.DomainName ='ChannelEntryPoint'&#xD;&#xA;and d.SourceSystemName ='RDS PRD ENGINE')&#xD;&#xA;) a &#xD;&#xA;group by fksalesofferidentifier )forsaleschanneltypedesc on forsaleschanneltypedesc.fksalesofferidentifier=sv.fksalesofferidentifier&#xD;&#xA;&#xD;&#xA;--CurrentPaymentTypeCode--&#xD;&#xA;left outer join (select fksalesofferidentifier, listagg(a.sourcecode,',') within group (order by a.sourcecode) as sourcecode from &#xD;&#xA;(&#xD;&#xA;(select sd.salesofferdeterminationvalue,fksalesofferidentifier from &quot;+context.sourceschema+&quot;.salesofferdetermination_1 sd&#xD;&#xA;inner join &quot;+context.sourceschema+&quot;.domaincodecrossreference d on d.domainreferencecode=sd.SalesOfferDeterminationTypeCode&#xD;&#xA;where d.DomainName = 'SalesOfferDeterminationTypeCode' and d.SourceSystemName ='RDS PRD ENGINE' and d.sourcecode='CurrentPaymentType' &#xD;&#xA;and sd.modifiedon>= cast('&quot;+context.lastruntime+&quot;' as timestamp)&#xD;&#xA;group by sd.salesofferdeterminationvalue,fksalesofferidentifier order by fksalesofferidentifier) temp&#xD;&#xA;&#xD;&#xA;left outer join &quot;+context.sourceschema+&quot;.domaincodecrossreference d  on (temp.salesofferdeterminationvalue= d.sourcecode  and d.DomainName ='CurrentPaymentTypeCode'&#xD;&#xA;and d.SourceSystemName ='RDS PRD ENGINE')&#xD;&#xA;) a &#xD;&#xA;group by fksalesofferidentifier )forcurrentpaymenttype on forcurrentpaymenttype.fksalesofferidentifier=sv.fksalesofferidentifier&#xD;&#xA;&#xD;&#xA;--currentpaymenttypedesc&#xD;&#xA;left outer join (select fksalesofferidentifier, listagg(a.sourcedescription,',') within group (order by a.sourcedescription) as sourcedescription from &#xD;&#xA;(&#xD;&#xA;(select sd.salesofferdeterminationvalue,fksalesofferidentifier from &quot;+context.sourceschema+&quot;.salesofferdetermination_1 sd&#xD;&#xA;inner join &quot;+context.sourceschema+&quot;.domaincodecrossreference d on d.domainreferencecode=sd.SalesOfferDeterminationTypeCode&#xD;&#xA;where d.DomainName = 'SalesOfferDeterminationTypeCode' and d.SourceSystemName ='RDS PRD ENGINE' and d.sourcecode='CurrentPaymentType' &#xD;&#xA;and sd.modifiedon>= cast('&quot;+context.lastruntime+&quot;' as timestamp)&#xD;&#xA;group by sd.salesofferdeterminationvalue,fksalesofferidentifier order by fksalesofferidentifier) temp&#xD;&#xA;&#xD;&#xA;left outer join &quot;+context.sourceschema+&quot;.domaincodecrossreference d  on (temp.salesofferdeterminationvalue= d.sourcecode  and d.DomainName ='CurrentPaymentTypeCode'&#xD;&#xA;and d.SourceSystemName ='RDS PRD ENGINE')&#xD;&#xA;) a &#xD;&#xA;group by fksalesofferidentifier )forcurrentpaymenttypedesc on forcurrentpaymenttypedesc.fksalesofferidentifier=sv.fksalesofferidentifier&#xD;&#xA;&#xD;&#xA;--DesiredPaymentTypeCode--&#xD;&#xA;left outer join (select fksalesofferidentifier, listagg(a.sourcecode,',') within group (order by a.sourcecode) as sourcecode from &#xD;&#xA;(&#xD;&#xA;(select sd.salesofferdeterminationvalue,fksalesofferidentifier from &quot;+context.sourceschema+&quot;.salesofferdetermination_1 sd&#xD;&#xA;inner join &quot;+context.sourceschema+&quot;.domaincodecrossreference d on d.domainreferencecode=sd.SalesOfferDeterminationTypeCode&#xD;&#xA;where d.DomainName = 'SalesOfferDeterminationTypeCode' and d.SourceSystemName ='RDS PRD ENGINE' and d.sourcecode='DesiredPaymentType' &#xD;&#xA;--and sd.modifiedon>= cast('&quot;+context.lastruntime+&quot;' as timestamp)&#xD;&#xA;group by sd.salesofferdeterminationvalue,fksalesofferidentifier order by fksalesofferidentifier) temp&#xD;&#xA;&#xD;&#xA;left outer join &quot;+context.sourceschema+&quot;.domaincodecrossreference d  on (temp.salesofferdeterminationvalue= d.sourcecode  and d.DomainName ='DesiredPaymentTypeCode'&#xD;&#xA;and d.SourceSystemName ='RDS PRD ENGINE')&#xD;&#xA;) a &#xD;&#xA;group by fksalesofferidentifier )fordesiredpaymenttype on fordesiredpaymenttype.fksalesofferidentifier=sv.fksalesofferidentifier&#xD;&#xA;&#xD;&#xA;--desiredpaymenttypedesc--&#xD;&#xA;left outer join (select fksalesofferidentifier, listagg(a.sourcedescription,',') within group (order by a.sourcedescription) as sourcedescription from &#xD;&#xA;(&#xD;&#xA;(select sd.salesofferdeterminationvalue,fksalesofferidentifier from &quot;+context.sourceschema+&quot;.salesofferdetermination_1 sd&#xD;&#xA;inner join &quot;+context.sourceschema+&quot;.domaincodecrossreference d on d.domainreferencecode=sd.SalesOfferDeterminationTypeCode&#xD;&#xA;where d.DomainName = 'SalesOfferDeterminationTypeCode' and d.SourceSystemName ='RDS PRD ENGINE' and d.sourcecode='DesiredPaymentType' &#xD;&#xA;--and sd.modifiedon>= cast('&quot;+context.lastruntime+&quot;' as timestamp)&#xD;&#xA;group by sd.salesofferdeterminationvalue,fksalesofferidentifier order by fksalesofferidentifier) temp&#xD;&#xA;&#xD;&#xA;left outer join &quot;+context.sourceschema+&quot;.domaincodecrossreference d  on (temp.salesofferdeterminationvalue= d.sourcecode  and d.DomainName ='DesiredPaymentTypeCode'&#xD;&#xA;and d.SourceSystemName ='RDS PRD ENGINE')&#xD;&#xA;) a &#xD;&#xA;group by fksalesofferidentifier )fordesiredpaymenttypedesc on fordesiredpaymenttypedesc.fksalesofferidentifier=sv.fksalesofferidentifier&#xD;&#xA;&#xD;&#xA;left outer join &quot;+context.sourceschema+&quot;.DomainCodeCrossReference d1 on s.SalesOfferRewardFrequencyTypeCode = d1.DomainReferenceCode and d1.DomainName = 'SalesOfferRewardFrequencyTypeCode'&#xD;&#xA;left outer join &quot;+context.sourceschema+&quot;.DomainCodeCrossReference d2 on s.SalesOfferCustomerJourneyTypeText = d2.sourcecode and d2.DomainName = 'JourneyType'&#xD;&#xA;where s.modifiedon>= cast('&quot;+context.lastruntime+&quot;' as timestamp) or sv.modifiedon>= cast('&quot;+context.lastruntime+&quot;' as timestamp)  &#xD;&#xA;)a&quot;"/>
+    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="true"/>
+    <elementParameter field="CHECK" name="PROPAGATE_RECORD_SET" value="false"/>
+    <elementParameter field="COLUMN_LIST" name="RECORD_SET_COLUMN" value="" show="false"/>
+    <elementParameter field="CHECK" name="USE_PREPAREDSTATEMENT" value="false"/>
+    <elementParameter field="TABLE" name="SET_PREPAREDSTATEMENT_PARAMETERS" show="false"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;" show="false"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="TEXT" name="COMMIT_EVERY" value="10000" show="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="dimsalesoffer_work"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tRedshiftRow_5"/>
+    <metadata connector="REJECT" name="REJECT">
+      <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" precision="0" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tRunJob" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="1120" posY="416">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_6" show="false"/>
+    <elementParameter field="CHECK" name="USE_DYNAMIC_JOB" value="false"/>
+    <elementParameter field="TEXT" name="CONTEXT_JOB" value="" show="false"/>
+    <elementParameter field="PROCESS_TYPE" name="PROCESS" value="NZ_Dependency_Update"/>
+    <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_CONTEXT" value="Default"/>
+    <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_PROCESS" value="_lmcf4BAREem7asVPsexWTQ"/>
+    <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_VERSION" value="Latest"/>
+    <elementParameter field="TEXT" name="CONTEXT_NAME" value="Default" show="false"/>
+    <elementParameter field="CHECK" name="USE_INDEPENDENT_PROCESS" value="false"/>
+    <elementParameter field="CHECK" name="DIE_ON_CHILD_ERROR" value="true"/>
+    <elementParameter field="CHECK" name="TRANSMIT_WHOLE_CONTEXT" value="true"/>
+    <elementParameter field="TABLE" name="CONTEXTPARAMS">
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="tablename"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.targetschema+&quot;.&quot;+context.tablename"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="status"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="&quot;Load successful&quot;"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="sourcesystem"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.sourcesystem"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="metadataschema"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.metadataschema"/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="PROPAGATE_CHILD_RESULT" value="false"/>
+    <elementParameter field="CHECK" name="PRINT_PARAMETER" value="false"/>
+    <elementParameter field="CHECK" name="TRANSMIT_ORIGINAL_CONTEXT" value="true" show="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="Dependency_Update"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tRunJob_6"/>
+  </node>
+  <node componentName="tRunJob" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="576" posY="128">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_4" show="false"/>
+    <elementParameter field="CHECK" name="USE_DYNAMIC_JOB" value="false"/>
+    <elementParameter field="TEXT" name="CONTEXT_JOB" value="" show="false"/>
+    <elementParameter field="PROCESS_TYPE" name="PROCESS" value="NZ_Dependency_Update"/>
+    <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_CONTEXT" value="Default"/>
+    <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_PROCESS" value="_lmcf4BAREem7asVPsexWTQ"/>
+    <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_VERSION" value="Latest"/>
+    <elementParameter field="TEXT" name="CONTEXT_NAME" value="Default" show="false"/>
+    <elementParameter field="CHECK" name="USE_INDEPENDENT_PROCESS" value="false"/>
+    <elementParameter field="CHECK" name="DIE_ON_CHILD_ERROR" value="true"/>
+    <elementParameter field="CHECK" name="TRANSMIT_WHOLE_CONTEXT" value="true"/>
+    <elementParameter field="TABLE" name="CONTEXTPARAMS">
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="tablename"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.targetschema+&quot;.&quot;+context.tablename"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="status"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="&quot;InProgress&quot;"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="sourcesystem"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.sourcesystem"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="metadataschema"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.metadataschema"/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="PROPAGATE_CHILD_RESULT" value="false"/>
+    <elementParameter field="CHECK" name="PRINT_PARAMETER" value="false"/>
+    <elementParameter field="CHECK" name="TRANSMIT_ORIGINAL_CONTEXT" value="true" show="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="Dependency_Update"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tRunJob_4"/>
+  </node>
+  <node componentName="tRunJob" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="320" posY="128">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_5" show="false"/>
+    <elementParameter field="CHECK" name="USE_DYNAMIC_JOB" value="false"/>
+    <elementParameter field="TEXT" name="CONTEXT_JOB" value="" show="false"/>
+    <elementParameter field="PROCESS_TYPE" name="PROCESS" value="NZ_Dependency_check"/>
+    <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_CONTEXT" value="Default"/>
+    <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_PROCESS" value="_gaoiUBAREem7asVPsexWTQ"/>
+    <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_VERSION" value="Latest"/>
+    <elementParameter field="TEXT" name="CONTEXT_NAME" value="Default" show="false"/>
+    <elementParameter field="CHECK" name="USE_INDEPENDENT_PROCESS" value="false"/>
+    <elementParameter field="CHECK" name="DIE_ON_CHILD_ERROR" value="true"/>
+    <elementParameter field="CHECK" name="TRANSMIT_WHOLE_CONTEXT" value="true"/>
+    <elementParameter field="TABLE" name="CONTEXTPARAMS">
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="taskname"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.taskname"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="hardstop"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.hardstop"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="interval"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.interval"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="tablename"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.targetschema+&quot;.&quot;+context.tablename"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="filename"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.filename"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="lastruntime"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.lastruntime"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="sourcesystem"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.sourcesystem"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="metadataschema"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.metadataschema"/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="PROPAGATE_CHILD_RESULT" value="false"/>
+    <elementParameter field="CHECK" name="PRINT_PARAMETER" value="false"/>
+    <elementParameter field="CHECK" name="TRANSMIT_ORIGINAL_CONTEXT" value="true" show="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="DependencyCheck"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tRunJob_5">
+      <column comment="" key="false" length="-1" name="datadate" nullable="true" pattern="&quot;yyyy-MM-dd hh:MM:ss&quot;" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="320" posY="32">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_2" show="false"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="&#xA;context.datadate=input_row.datadate;&#xA;System.out.println(&quot;Data Date:&quot;+context.datadate);"/>
+    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="TEXT" name="LABEL" value="set_datadate"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tJavaRow_2">
+      <column comment="" key="false" length="-1" name="datadate" nullable="true" pattern="&quot;yyyy-MM-dd hh:MM:ss&quot;" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tAssertCatcher" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="128" posY="480">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tAssertCatcher_2" show="false"/>
+    <elementParameter field="CHECK" name="CATCH_JAVA_EXCEPTION" value="true"/>
+    <elementParameter field="CHECK" name="GET_ORIGINAL_EXCEPTION" value="true"/>
+    <elementParameter field="CHECK" name="CATCH_TASSERT" value="true"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tAssertCatcher_2">
+      <column key="false" length="0" name="moment" nullable="true" pattern="&quot;yyyy-MM-dd HH:mm:ss&quot;" precision="0" sourceType="" type="id_Date" originalLength="-1" usefulColumn="true"/>
+      <column key="false" length="20" name="pid" nullable="true" precision="0" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column key="false" length="50" name="project" nullable="true" precision="0" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column key="false" length="255" name="job" nullable="true" precision="0" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column key="false" length="5" name="language" nullable="true" precision="0" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column key="false" length="50" name="origin" nullable="true" precision="0" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column key="false" length="10" name="status" nullable="true" precision="0" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column key="false" length="255" name="substatus" nullable="true" precision="0" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column key="false" length="255" name="description" nullable="true" precision="0" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column defaultValue="" key="false" length="0" name="exception" nullable="true" precision="0" sourceType="" type="id_Object" originalLength="255" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="352" posY="480">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_6" show="false"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="if (input_row.description == &quot;Child job running failed&quot;)&#xA;{&#xA;context.errordesc=&quot;Dependency Failure&quot;;&#xA;}&#xA;else&#xA;{&#xA;context.errordesc=input_row.description;&#xA;}&#xA;"/>
+    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="TEXT" name="LABEL" value="set_error_description"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tJavaRow_6"/>
+  </node>
+  <node componentName="tRedshiftRollback" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="576" posY="480">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRedshiftRollback_2" show="false"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tRedshiftConnection_1"/>
+    <elementParameter field="CHECK" name="CLOSE" value="true"/>
+    <elementParameter field="TEXT" name="LABEL" value="rollback"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tRedshiftRollback_2"/>
+  </node>
+  <node componentName="tRunJob" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="800" posY="480">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_7" show="false"/>
+    <elementParameter field="CHECK" name="USE_DYNAMIC_JOB" value="false"/>
+    <elementParameter field="TEXT" name="CONTEXT_JOB" value="" show="false"/>
+    <elementParameter field="PROCESS_TYPE" name="PROCESS" value="Staging_Error_Handling_Job"/>
+    <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_CONTEXT" value="Default"/>
+    <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_PROCESS" value="_yWdpMBAmEempIswtahN56g"/>
+    <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_VERSION" value="Latest"/>
+    <elementParameter field="TEXT" name="CONTEXT_NAME" value="Default" show="false"/>
+    <elementParameter field="CHECK" name="USE_INDEPENDENT_PROCESS" value="false"/>
+    <elementParameter field="CHECK" name="DIE_ON_CHILD_ERROR" value="true"/>
+    <elementParameter field="CHECK" name="TRANSMIT_WHOLE_CONTEXT" value="false"/>
+    <elementParameter field="TABLE" name="CONTEXTPARAMS">
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="taskname"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.taskname"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="tablename"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.targetschema+&quot;.&quot;+context.tablename"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="filename"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.filename"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="errordesc"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.errordesc"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="mailfrom"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.mailfrom"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="mailto"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.mailto"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="sourcesystem"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.sourcesystem"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="metadataschema"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.metadataschema"/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="PROPAGATE_CHILD_RESULT" value="false"/>
+    <elementParameter field="CHECK" name="PRINT_PARAMETER" value="false"/>
+    <elementParameter field="CHECK" name="TRANSMIT_ORIGINAL_CONTEXT" value="true" show="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="staging_errorhandling_job"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tRunJob_7"/>
+  </node>
+  <node componentName="tDie" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="128" posY="352">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDie_1" show="false"/>
+    <elementParameter field="TEXT" name="MESSAGE" value="&quot;Load Failure&quot;"/>
+    <elementParameter field="TEXT" name="CODE" value="4"/>
+    <elementParameter field="CLOSED_LIST" name="PRIORITY" value="5"/>
+    <elementParameter field="CHECK" name="EXIT_JVM" value="false"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tDie_1"/>
+  </node>
+  <connection connectorName="FLOW" label="row1" lineStyle="0" metaname="tRunJob_1" offsetLabelX="0" offsetLabelY="0" source="tRunJob_1" target="tJavaRow_1">
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="row1" show="false"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tRunJob_1" offsetLabelX="0" offsetLabelY="0" source="tRunJob_1" target="tRunJob_4">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk14" show="false"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tRedshiftConnection_1" offsetLabelX="0" offsetLabelY="0" source="tRedshiftConnection_1" target="tRedshiftRow_5">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk1" show="false"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tRedshiftCommit_1" offsetLabelX="0" offsetLabelY="0" source="tRedshiftCommit_1" target="tRunJob_2">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk4" show="false"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tRunJob_2" offsetLabelX="0" offsetLabelY="0" source="tRunJob_2" target="tRunJob_6">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk13" show="false"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tRedshiftRow_1" offsetLabelX="0" offsetLabelY="0" source="tRedshiftRow_1" target="tRedshiftInput_1">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk2" show="false"/>
+  </connection>
+  <connection connectorName="FLOW" label="row8" lineStyle="0" metaname="tRedshiftInput_1" offsetLabelX="0" offsetLabelY="0" source="tRedshiftInput_1" target="tJavaRow_3">
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="row8" show="false"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJavaRow_3" offsetLabelX="0" offsetLabelY="0" source="tJavaRow_3" target="tRedshiftRow_3">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk3" show="false"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tRedshiftRow_3" offsetLabelX="0" offsetLabelY="0" source="tRedshiftRow_3" target="tRedshiftInput_3">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk7" show="false"/>
+  </connection>
+  <connection connectorName="FLOW" label="row7" lineStyle="0" metaname="tRedshiftInput_3" offsetLabelX="0" offsetLabelY="0" source="tRedshiftInput_3" target="tJavaRow_5">
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="row7" show="false"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJavaRow_5" offsetLabelX="0" offsetLabelY="0" source="tJavaRow_5" target="tRedshiftCommit_1">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk8" show="false"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tRedshiftRow_5" offsetLabelX="0" offsetLabelY="0" source="tRedshiftRow_5" target="tRedshiftRow_1">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk15" show="false"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tRunJob_4" offsetLabelX="0" offsetLabelY="0" source="tRunJob_4" target="tRunJob_5">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk12" show="false"/>
+  </connection>
+  <connection connectorName="FLOW" label="row3" lineStyle="0" metaname="tRunJob_5" offsetLabelX="0" offsetLabelY="0" source="tRunJob_5" target="tJavaRow_2">
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="row3" show="false"/>
+  </connection>
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tRunJob_5" offsetLabelX="0" offsetLabelY="0" source="tRunJob_5" target="tRedshiftConnection_1">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk2" show="false"/>
+  </connection>
+  <connection connectorName="FLOW" label="row2" lineStyle="0" metaname="tAssertCatcher_2" offsetLabelX="0" offsetLabelY="0" source="tAssertCatcher_2" target="tJavaRow_6">
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="row2" show="false"/>
+  </connection>
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tAssertCatcher_2" offsetLabelX="0" offsetLabelY="0" source="tAssertCatcher_2" target="tDie_1">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk1" show="false"/>
+  </connection>
+  <connection connectorName="FLOW" label="row9" lineStyle="0" metaname="tJavaRow_6" offsetLabelX="0" offsetLabelY="0" source="tJavaRow_6" target="tRedshiftRollback_2">
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="row9" show="false"/>
+  </connection>
+  <connection connectorName="FLOW" label="row10" lineStyle="0" metaname="tRedshiftRollback_2" offsetLabelX="0" offsetLabelY="0" source="tRedshiftRollback_2" target="tRunJob_7">
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="row10" show="false"/>
+  </connection>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_1" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="92;131;150" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRedshiftConnection_1" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="92;131;150" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRedshiftCommit_1" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="92;131;150" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_2" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="92;131;150" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRedshiftRow_1" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="92;131;150" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRedshiftInput_1" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="92;131;150" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRedshiftRow_3" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="92;131;150" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRedshiftInput_3" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="92;131;150" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRedshiftRow_5" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="92;131;150" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_6" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="92;131;150" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_4" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="92;131;150" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_5" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="92;131;150" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tAssertCatcher_2" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="92;131;150" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDie_1" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="92;131;150" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+  </subjob>
+</talendfile:ProcessType>
