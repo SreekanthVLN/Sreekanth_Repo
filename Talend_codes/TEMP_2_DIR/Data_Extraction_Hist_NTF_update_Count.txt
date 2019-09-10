@@ -1,0 +1,6 @@
+select line_count from STL_UNLOAD_LOG
+where path like '%+context.target_bucketname+/+context.unloadfolder+context.filename+.dat%' 
+and start_time=(select max(start_time) from STL_UNLOAD_LOG
+where path like '%+context.target_bucketname+/+context.unloadfolder+context.filename+.dat%')
+;
+;

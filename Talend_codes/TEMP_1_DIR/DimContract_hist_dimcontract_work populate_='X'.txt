@@ -1,0 +1,104 @@
+truncate table +context.targetschema+.dimcontract_work;
+INSERT INTO +context.targetschema+.dimcontract_work
+(
+  
+  contractnumber,
+  contractstatuscode,
+  contractstatusdescription,
+  contractreasoncode,
+  contractreasondescription,
+  contractendreasoncode,
+  contractendreasondescription,
+  contractcancellationreasoncode,
+  contractcancellationreasondescription,
+  moveindate,
+  moveoutdate,
+  contractstartdate,
+  contractenddate,
+  productstartdate,
+  productenddate,
+  contractaccepteddate,
+  contractproductname,
+  recordeffectivestartdate,
+  recordeffectiveenddate,
+  currentrecordindicator,
+  sourcesystemidentifier,
+  createdby,
+  createdon,
+  modifiedby,
+  modifiedon,
+  CancelledIndicator,
+  ContractSignedDate
+)
+select distinct a.* from
+
+(
+select c.ContractIdentifier as ContractNumber,
+d1.SourceCode as ContractStatusCode,
+dc1.DomainReferenceMeaningText as ContractStatusDescription,
+d2.SourceCode as ContractReasonCode,
+dc2.DomainReferenceMeaningText as ContractReasonDescription,
+d3.SourceCode as ContractEndReasonCode,
+dc3.DomainReferenceMeaningText as ContractEndReasonDescription,
+d4.SourceCode as ContractCancellationReasonCode,
+dc4.DomainReferenceMeaningText as ContractCancellationReasonDescription,
+cras.MoveInDate as MoveInDate,
+cras.MoveOutDate as MoveOutDate,
+c.ContractStartDate as ContractStartDate,
+c.ContractEndDate as ContractEndDate,
+soc.ContractChangedStartDate as ProductStartDate,   
+soc.ContractChangedEndDate as ProductEndDate,
+soc.ContractAcceptedDate as ContractAcceptedDate,
+tp.TariffFriendlyDescriptionText as ContractProductName,
+cast('+context.datadate+' as timestamp) as RecordEffectiveStartDate,  
+cast('9999-12-31 23:59:59' as timestamp) as RecordEffectiveEndDate,
+1 as CurrentRecordIndicator,
+6 as SourceSystemIdentifier,    
+'+context.taskname+' as createdby,
+getdate() as createdon,
+'+context.taskname+' as ModifiedBy,
+getdate() as ModifiedOn,
+soc.ContractCancelledIndicator as CancelledIndicator,
+c.contractsigneddate as ContractSignedDate
+from +context.sourceschema+.contract c
+inner join +context.sourceschema+.contractras cras on c.skContractIdentifier = cras.fkContractIdentifier
+inner join +context.sourceschema+.SalesOrderContract soc on c.skContractIdentifier = soc.fkContractIdentifier and soc.ContractCancelledIndicator = 'X'
+inner join +context.sourceschema+.SalesOrderItem soi on soc.fkSalesOrderItemIdentifier = soi.skSalesOrderItemIdentifier
+
+left outer join (select F.*, 
+                rank() over (partition by fkServiceProvisionIdentifier, ServiceProvisionFactCategoryCode,ServiceProvisionFactEffectiveFromDateTime order by ServiceProvisionFactSequenceNumber desc) as rnk 
+                from +context.sourceschema+.ServiceProvisionFactRaS F
+                inner join +context.sourceschema+.DomainCodeCrossReference dcr on (F.ServiceProvisionFactCategoryCode = dcr.DomainReferenceCode and
+                dcr.DomainName  = 'ServiceProvisionFactCategoryCode' and dcr.SourceSystemName = 'SAP ISU' and dcr.SourceCode in ('GNRTMAI','ENRTMAI'))
+                where SourceSystemIdentifier IN (1,2,6)
+                )spfs
+on  (spfs.rnk = 1 and cras.fkserviceprovisionidentifier = spfs.fkserviceprovisionidentifier and 
+(soc.ContractChangedStartDate between spfs.ServiceProvisionFactEffectiveFromDateTime and spfs.ServiceProvisionFactEffectiveToDateTime))
+
+left outer join +context.sourceschema+.TariffPrice tp on (spfs.RateFactGroupCode = tp.RateFactGroup and soi.fkProductIdentifier = tp.fkProductIdentifier and 
+(soc.ContractChangedStartDate between tp.TariffPriceEffectiveFromDateTime and tp.TariffPriceEffectiveToDateTime) and tp.SourceSystemIdentifier IN (1,2,6))
+               
+left outer join  +context.sourceschema+.DomainCodeCrossReference d1 on d1.sourcesystemname='SAP CRM' and d1.DomainName = 'SalesOrderItemStatusCode'
+                 and soi.SalesOrderItemStatusCode = d1.DomainReferenceCode
+
+left outer join  +context.sourceschema+.DomainCodeCrossReference d2 on d2.sourcesystemname='SAP CRM' and d2.DomainName = 'ContractReasonCode'
+                 and soc.ContractReasonCode = d2.DomainReferenceCode
+                
+left outer join +context.sourceschema+.DomainCodeCrossReference d3 on d3.sourcesystemname='SAP CRM' and d3.DomainName = 'ContractEndReasonCode'
+                and soc.ContractEndReasonCode = d3.DomainReferenceCode
+                
+left outer join +context.sourceschema+.DomainCodeCrossReference d4 on d4.sourcesystemname='SAP CRM' and d4.DomainName = 'ContractCancellationReasonCode'
+                and soc.ContractCancellationReasonCode = d4.DomainReferenceCode
+
+left outer join +context.sourceschema+.DomainCodeMeanings dc1 on dc1.DomainReferenceCode = soi.SalesOrderItemStatusCode and dc1.DomainName = 'SalesOrderItemStatusCode'
+left outer join +context.sourceschema+.DomainCodeMeanings dc2 on dc2.DomainReferenceCode = soc.ContractReasonCode and dc2.DomainName = 'ContractReasonCode'
+left outer join +context.sourceschema+.DomainCodeMeanings dc3 on dc3.DomainReferenceCode = soc.ContractEndReasonCode and dc3.DomainName = 'ContractEndReasonCode'
+left outer join +context.sourceschema+.DomainCodeMeanings dc4 on dc4.DomainReferenceCode = soc.ContractCancellationReasonCode and dc4.DomainName = 'ContractCancellationReasonCode'
+
+
+where c.SourceSystemIdentifier IN (1,2,6) and cras.SourceSystemIdentifier in (1,2,6) and soc.SourceSystemIdentifier IN (1,2,6) and soi.SourceSystemIdentifier IN (1,2,6) and
+(c.modifiedon >= cast ('+context.lastruntime+' as timestamp) or cras.modifiedon >=cast ('+context.lastruntime+' as timestamp)
+or soc.modifiedon >=cast('+context.lastruntime+' as timestamp) or soi.modifiedon >=cast('+context.lastruntime+' as timestamp) 
+or tp.modifiedon >=cast('+context.lastruntime+' as timestamp) or spfs.modifiedon >=cast('+context.lastruntime+' as timestamp) )
+)a 
+;

@@ -1,0 +1,70 @@
+
+INSERT INTO +context.targetschema+.dimcontract
+(
+  contractnumber,
+  contractstatuscode,
+  contractstatusdescription,
+  contractreasoncode,
+  contractreasondescription,
+  contractendreasoncode,
+  contractendreasondescription,
+  contractcancellationreasoncode,
+  contractcancellationreasondescription,
+  moveindate,
+  moveoutdate,
+  contractstartdate,
+  contractenddate,
+  productstartdate,
+  productenddate,   
+  contractaccepteddate,
+  contractproductname,
+  recordeffectivestartdate,
+  recordeffectiveenddate,
+  currentrecordindicator,
+  sourcesystemidentifier,
+  createdby,
+  createdon,
+  modifiedby,
+  modifiedon,
+  CancelledIndicator,
+  ContractSignedDate
+)
+select a.* from
+
+(select  ContractNumber,
+ ContractStatusCode,
+ ContractStatusDescription,
+ ContractReasonCode,
+ ContractReasonDescription,
+ ContractEndReasonCode,
+ ContractEndReasonDescription,
+ ContractCancellationReasonCode,
+ ContractCancellationReasonDescription,
+ MoveInDate,
+ MoveOutDate,
+ ContractStartDate,
+ ContractEndDate,
+ ProductStartDate,
+ ProductEndDate,
+ ContractAcceptedDate,
+ ContractProductName,
+ RecordEffectiveStartDate,
+ RecordEffectiveEndDate,
+CurrentRecordIndicator,
+6 as SourceSystemIdentifier,    
+'+context.taskname+' as createdby,
+getdate() as createdon,
+'+context.taskname+' as ModifiedBy,
+getdate() as ModifiedOn,
+CancelledIndicator,
+ContractSignedDate
+from +context.targetschema+.dimcontract_work ) a
+left outer join  +context.targetschema+.dimcontract dc
+on (dc.ContractNumber  = a.ContractNumber
+and dc.ProductStartDate = a.ProductStartDate
+and dc.SourceSystemIdentifier = a.SourceSystemIdentifier
+and dc.currentrecordindicator =1)
+where dc.ContractNumber is null
+and dc.ProductStartDate is null
+and  dc.SourceSystemIdentifier is null
+;

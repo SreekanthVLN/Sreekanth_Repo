@@ -1,0 +1,44 @@
+UPDATE edfedimensionalconfzone.dimcontract
+   SET 
+       moveindate = a.moveindate,
+       modifiedby = '+context.taskname+',
+       modifiedon = getdate()
+ from
+(select case when X.ContractStartDate > ISNULL(Mig.CIS_START_DATE :: date,'1900-01-01 00:00:00')  then X.MoveInDate 
+else ISNULL(Mig.CIS_START_DATE :: date ,'1900-01-01 00:00:00') end as MoveInDate,
+ContractChangedStartDate as ProductStartDate,
+ContractIdentifier as ContractNumber,
+6 as SourceSystemIdentifier
+from
+(
+ select acct.AccountIdentifier, 
+ cntrRas.MoveInDate, 
+ sp.MeterPointNumberMPXN, 
+ cntr.ContractStartDate,
+ SOContract.ContractChangedStartDate,
+ cntr.ContractIdentifier
+
+ from edfenormalisedconfzone.Account acct 
+ inner join edfenormalisedconfzone.ContractRaS cntrRaS  on acct.skAccountIdentifier = cntrRaS.fkAccountIdentifier
+ inner join edfenormalisedconfzone.Contract cntr on cntrRaS.fkContractIdentifier = cntr.skContractIdentifier
+ inner join edfenormalisedconfzone.ServicePointProvisionRaS sppr  on cntrRaS.fkServiceProvisionIdentifier = sppr.fkServiceProvisionIdentifier
+            and cntr.ContractStartDate between sppr.ServiceSupplyEffectiveFromDateTime  and sppr.ServiceSupplyEffectiveToDateTime            
+ inner join edfenormalisedconfzone.ServicePoint sp  on sppr.fkServicePointIdentifier = sp.skServicePointIdentifier
+ 
+inner join(select fkContractIdentifier, Max(ContractChangedStartDate) as ContractChangedStartDate from  edfenormalisedconfzone.SalesOrderContract
+where SourceSystemIdentifier in (1,2,6) group by  fkContractIdentifier)SOContract on cntr.skContractIdentifier = SOContract.fkContractIdentifier
+
+where acct.SourceSystemIdentifier in (1,2,6) and cntrRaS.SourceSystemIdentifier IN (1,2,6)
+and cntr.SourceSystemIdentifier IN (1,2,6) and sppr.SourceSystemIdentifier IN (1,2,6)
+and sp.SourceSystemIdentifier IN (1,2,6) 
+) X 
+left outer join edfedimensionalconfzone.cis_migrated mig
+on X.AccountIdentifier = Mig.buag 
+and X.MeterPointNumberMPXN = Mig.mpxn
+)a
+inner join edfedimensionalconfzone.dimcontract dc
+on (dc.ProductStartDate=a.ProductStartDate
+and dc.ContractNumber=a.ContractNumber
+and dc.SourceSystemIdentifier = a.SourceSystemIdentifier)
+
+;

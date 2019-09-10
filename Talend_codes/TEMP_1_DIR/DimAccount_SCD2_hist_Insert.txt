@@ -1,0 +1,36 @@
+
+insert into +context.targetschema+.dimaccount
+( accountnumber,
+  paymenttypecode,
+  paymenttypedescription,
+  paymenttypeshortdescription,
+  paymenttypegroup,
+  paperlesspreferenceindicator,
+  sourcesystemidentifier,
+  createdby,
+  createdon,
+  modifiedby,
+  modifiedon,
+  recordeffectivestartdate,
+  recordeffectiveenddate,
+  currentrecordindicator
+)
+select a.* from 
+(select accountnumber,
+paymenttypecode,
+paymenttypedescription,
+paymenttypeshortdescription,
+paymenttypegroup,
+paperlesspreferenceindicator,
+6 as sourcesystemidentifier,
+'+context.taskname+' as createdby,
+getdate() as createdon,
+'+context.taskname+' as modifiedby,
+getdate() as modifiedon,
+recordeffectivestartdate, 
+recordeffectiveenddate,
+currentrecordindicator
+from +context.targetschema+.dimaccount_work
+) a
+left outer join +context.targetschema+.dimaccount b on (a.accountnumber = b.accountnumber and a.SourceSystemIdentifier = b.SourceSystemIdentifier and b.currentrecordindicator =1)
+where b.accountnumber is null and b.SourceSystemIdentifier is null;

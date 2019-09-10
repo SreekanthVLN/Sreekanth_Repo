@@ -1,0 +1,3 @@
+select cdp_bucketname,target_bucketname,unloadfolder,tablename,filepattern,query,delimeter,filetype,kmskey,timestamp_requirement,sourcesystem
+ from edfe_etl_metadata.dataextraction_metadata_table where 
+ fileserialnumber=+context.fileserialnumber+;

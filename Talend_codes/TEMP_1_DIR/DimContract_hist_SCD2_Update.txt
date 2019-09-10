@@ -1,0 +1,52 @@
+
+Update +context.targetschema+.dimcontract 
+set  RecordEffectiveEndDate= dateadd(second,-1,cast('+context.datadate+' as timestamp)),
+currentrecordindicator=0,
+ModifiedBy=a.ModifiedBy,
+ModifiedOn=a.ModifiedOn
+from 
+(select contractnumber,
+  contractstatuscode,
+  contractstatusdescription,
+  contractreasoncode,
+  contractreasondescription,
+  contractendreasoncode,
+  contractendreasondescription,
+  contractcancellationreasoncode,
+  contractcancellationreasondescription,
+  moveindate,
+  moveoutdate,
+  contractstartdate,
+  contractenddate,
+  productstartdate,
+  productenddate,
+  contractaccepteddate,
+  contractproductname,
+  recordeffectivestartdate,
+  recordeffectiveenddate,
+  currentrecordindicator,
+  sourcesystemidentifier,
+  '+context.taskname+' as modifiedby,
+  getdate() as modifiedon,
+CancelledIndicator,
+ContractSignedDate
+from +context.targetschema+.dimcontract_work ) a
+inner join +context.targetschema+.dimcontract b
+on (b.ContractNumber = a.ContractNumber and 
+b.ProductStartDate = a.ProductStartDate 
+and b.SourceSystemIdentifier = a.SourceSystemIdentifier 
+and b.CancelledIndicator = a.CancelledIndicator
+and b.currentrecordindicator =1)
+where (isnull(b.ContractStatusCode,'X') <> isnull(a.ContractStatusCode,'X')
+or  isnull(b.ContractStatusDescription,'X') <> isnull(a.ContractStatusDescription,'X')
+or  isnull(b.ContractEndReasonCode,'X') <> isnull(a.ContractEndReasonCode,'X')
+or  isnull(b.ContractEndReasonDescription,'X') <> isnull(a.ContractEndReasonDescription,'X')
+or  isnull(b.ContractCancellationReasonCode,'X') <> isnull(a.ContractCancellationReasonCode,'X')
+or  isnull(b.ContractCancellationReasonDescription,'X') <> isnull(a.ContractCancellationReasonDescription,'X')
+or  isnull(b.MoveInDate,'1-Jan-1800') <> isnull(a.MoveInDate,'1-Jan-1800')
+or  isnull(b.MoveOutDate,'1-Jan-1800') <> isnull(a.MoveOutDate,'1-Jan-1800')
+or  isnull(b.ContractStartDate,'1-Jan-1800') <> isnull(a.ContractStartDate,'1-Jan-1800')
+or  isnull(b.ContractEndDate,'1-Jan-1800') <> isnull(a.ContractEndDate,'1-Jan-1800')
+or  isnull(b.ContractProductName,'X') <> isnull(a.ContractProductName,'X')
+or  isnull(b.ContractAcceptedDate,'1-Jan-1800') <> isnull(a.ContractAcceptedDate,'1-Jan-1800') 
+or  isnull(b.ContractSignedDate,'1-Jan-1800') <> isnull(a.ContractSignedDate,'1-Jan-1800'));

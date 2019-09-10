@@ -1,0 +1,1 @@
+select isnull(sum(rows),0) from stl_insert where query = (select max(query) from svl_qlog where upper(substring) like upper('%+context.tablename+%'));

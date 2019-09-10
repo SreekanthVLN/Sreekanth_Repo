@@ -1,0 +1,33 @@
+UPDATE +context.dimschema+.dimaccount
+ SET accountnumber = a.accountnumber,
+ paymenttypecode = a.paymenttypecode,
+ paymenttypedescription = a.paymenttypedescription,
+ paymenttypeshortdescription = a.paymenttypeshortdescription,
+ paymenttypegroup = a.paymenttypegroup,
+ paperlesspreferenceindicator = a.paperlesspreferenceindicator,
+ sourcesystemidentifier = a.sourcesystemidentifier,
+ modifiedby = a.modifiedby,
+ modifiedon = a.modifiedon
+from
+(select AccountIdentifier as AccountNumber,
+d.SourceCode as PaymentTypeCode,
+d1.DomainReferenceMeaningText as PaymentTypeDescription,
+case when d.SourceCode='01' then 'BDD' when d.SourceCode='02' then 'DDWAM'
+when d.SourceCode='03' then 'DDWAQ' when d.SourceCode='04' then 'CCWAM' when d.SourceCode='05' then 'CCWAQ' when d.SourceCode='06' then 'CCM'
+when d.SourceCode='07' then 'CCQ' when d.SourceCode='08' then 'PPM' when d.SourceCode='09' then 'CDD' when d.SourceCode='10' then 'PAYG'
+else null end PaymentTypeShortDescription,
+case when d.SourceCode in ('01','02','03','09') then 'Direct Debit' when d.sourcecode in ('04','05','06','07','08','10') then 'Cash' else 'Not Available' end as PaymentTypeGroup,
+isnull(ar.PaperlessPreferenceIndicator,'T') as PaperlessPreferenceIndicator,
+6 as SourceSystemIdentifier,
+'+context.taskname+' as modifiedby,
+getdate() as modifiedon
+--select *
+ from 
++context.schemaname+.account ac
+left outer join +context.schemaname+.accountras ar on (ac.skAccountIdentifier=ar.fkAccountIdentifier AND ar.SourceSystemIdentifier IN (1,2,6))
+left outer join +context.schemaname+.DomainCodeCrossReference d on (ar.PaymentTypeCode = d.DomainReferenceCode and d.DomainName = 'PaymentTypeCode' and d.sourcesystemname='SAP ISU' )
+left outer join +context.schemaname+.DomainCodeMeanings d1 on (d1.DomainReferenceCode = ar.PaymentTypeCode and d1.domainname = 'PaymentTypeCode')
+where ac.SourceSystemIdentifier IN (1,2,6) and (ac.modifiedon>= cast('+context.lastruntime+' as timestamp) or ar.modifiedon>= cast('+context.lastruntime+' as timestamp))
+)a
+inner join +context.dimschema+.dimaccount da on
+(da.accountnumber=a.accountnumber and da.SourceSystemIdentifier=a.SourceSystemIdentifier);

@@ -1,0 +1,29 @@
+
+Update +context.targetschema+.dimaccount set 
+RecordEffectiveEndDate= dateadd(second,-1,cast('+context.datadate+' as timestamp)),
+currentrecordindicator=0,
+ModifiedBy=a.ModifiedBy,
+ModifiedOn=a.ModifiedOn
+from 
+(select  accountnumber,
+  paymenttypecode,
+  paymenttypedescription,
+  paymenttypeshortdescription,
+  paymenttypegroup,
+  paperlesspreferenceindicator,
+  sourcesystemidentifier,
+  '+context.taskname+' as modifiedby,
+  getdate() as modifiedon,
+  recordeffectivestartdate,
+  recordeffectiveenddate,
+  currentrecordindicator
+from +context.targetschema+.dimaccount_work
+) a
+inner join +context.targetschema+.dimaccount b on (a.accountnumber = b.accountnumber and a.SourceSystemIdentifier = b.SourceSystemIdentifier and b.currentrecordindicator = 1)
+where (isnull(b.paymenttypecode,'X') <> isnull(a.paymenttypecode,'X')
+or isnull(b.paymenttypedescription,'X') <> isnull(a.paymenttypedescription,'X')
+or isnull(b.paymenttypeshortdescription,'X') <> isnull(a.paymenttypeshortdescription,'X')
+or isnull(b.paymenttypegroup,'X') <> isnull(a.paymenttypegroup,'X')
+or isnull(b.paperlesspreferenceindicator,'-1') <> isnull(a.paperlesspreferenceindicator,'-1')
+)
+;

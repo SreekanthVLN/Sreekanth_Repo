@@ -1,0 +1,8 @@
+unload ('+context.query+') to 's3://+context.target_bucketname+/+context.unloadfolder+context.filename+.dat'
+ iam_role 'arn:aws:iam::293425831536:role/R-Prod-AllowCDPUserToSeeBucketListInTheConsole'
+DELIMITER '+context.delimeter+' +context.filetype+ ALLOWOVERWRITE
+ ENCRYPTED
+KMS_KEY_ID '+context.kmskey+' 
+ESCAPE NULL AS '\\N' 
+ parallel off 
+;
