@@ -1,0 +1,861 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<talendfile:ProcessType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" defaultContext="Default" jobType="Standard">
+  <context confirmationNeeded="false" name="Default">
+    <contextParameter comment="" name="taskname" prompt="taskname?" promptNeeded="false" type="id_String" value="Task_RaS_Contract_Load"/>
+    <contextParameter comment="" name="tablename" prompt="tablename?" promptNeeded="false" type="id_String" value="edfenormalisedconfzone.contractras"/>
+    <contextParameter comment="" name="lastruntime" prompt="lastruntime?" promptNeeded="false" type="id_String" value=""/>
+    <contextParameter comment="" name="filename" prompt="filename?" promptNeeded="false" type="id_String" value=""/>
+    <contextParameter comment="" name="errordesc" prompt="errordesc?" promptNeeded="false" type="id_String" value=""/>
+    <contextParameter comment="" name="insertcount" prompt="insertcount?" promptNeeded="false" type="id_String" value=""/>
+    <contextParameter comment="" name="updatecount" prompt="updatecount?" promptNeeded="false" type="id_String" value=""/>
+    <contextParameter comment="" name="deletecount" prompt="deletecount?" promptNeeded="false" type="id_String" value=""/>
+    <contextParameter comment="" name="mailfrom" prompt="mailfrom?" promptNeeded="false" type="id_String" value=""/>
+    <contextParameter comment="" name="mailto" prompt="mailto?" promptNeeded="false" type="id_String" value=""/>
+    <contextParameter comment="" name="interval" prompt="interval?" promptNeeded="false" type="id_Integer" value="5"/>
+    <contextParameter comment="" name="hardstop" prompt="hardstop?" promptNeeded="false" type="id_Integer" value="30"/>
+    <contextParameter comment="" name="CDP_Redshift_ELT_Connection_Database" prompt="CDP_Redshift_ELT_Connection_Database?" promptNeeded="false" repositoryContextId="_KKeecGWMEeejG4GC5soTdQ" type="id_String" value="cuscdpdb"/>
+    <contextParameter comment="" name="CDP_Redshift_ELT_Connection_Port" prompt="CDP_Redshift_ELT_Connection_Port?" promptNeeded="false" repositoryContextId="_KKeecGWMEeejG4GC5soTdQ" type="id_String" value="5439"/>
+    <contextParameter comment="" name="CDP_Redshift_ELT_Connection_Login" prompt="CDP_Redshift_ELT_Connection_Login?" promptNeeded="false" repositoryContextId="_KKeecGWMEeejG4GC5soTdQ" type="id_String" value="talendcdp"/>
+    <contextParameter comment="" name="CDP_Redshift_ELT_Connection_Password" prompt="CDP_Redshift_ELT_Connection_Password?" promptNeeded="false" repositoryContextId="_KKeecGWMEeejG4GC5soTdQ" type="id_Password" value="4OdNPRxSnwXf0+wZ/vXMdA=="/>
+    <contextParameter comment="" name="CDP_Redshift_ELT_Connection_Server" prompt="CDP_Redshift_ELT_Connection_Server?" promptNeeded="false" repositoryContextId="_KKeecGWMEeejG4GC5soTdQ" type="id_String" value="cus-cdp-pre.csa09lowdp1h.eu-west-1.redshift.amazonaws.com"/>
+    <contextParameter comment="" name="CDP_Redshift_ELT_Connection_AdditionalParams" prompt="CDP_Redshift_ELT_Connection_AdditionalParams?" promptNeeded="false" repositoryContextId="_KKeecGWMEeejG4GC5soTdQ" type="id_String" value=""/>
+    <contextParameter comment="" name="CDP_Redshift_ELT_Connection_Schema" prompt="CDP_Redshift_ELT_Connection_Schema?" promptNeeded="false" repositoryContextId="_KKeecGWMEeejG4GC5soTdQ" type="id_String" value="edfe_etl_metadata"/>
+    <contextParameter comment="" name="sourcesystem" prompt="sourcesystem?" promptNeeded="false" type="id_String" value="SAP"/>
+  </context>
+  <parameters>
+    <elementParameter field="TEXT" name="SCREEN_OFFSET_X" value="0" show="false"/>
+    <elementParameter field="TEXT" name="SCREEN_OFFSET_Y" value="0" show="false"/>
+    <elementParameter field="TEXT" name="REPOSITORY_CONNECTION_ID" value="" show="false"/>
+    <elementParameter field="TEXT" name="OOZIE_PROPERTY_TYPENAME" value="" show="false"/>
+    <elementParameter field="TEXT" name="OOZIE_HADOOP_DISTRIBUTION" value="" show="false"/>
+    <elementParameter field="TEXT" name="OOZIE_HADOOP_VERSION" value="" show="false"/>
+    <elementParameter field="TEXT" name="OOZIE_ENABLE_KERBEROS" value="" show="false"/>
+    <elementParameter field="TEXT" name="OOZIE_NAME_NODE_PRINCIPAL" value="" show="false"/>
+    <elementParameter field="TEXT" name="OOZIE_USERNAME" value="" show="false"/>
+    <elementParameter field="TEXT" name="OOZIE_GROUP" value="" show="false"/>
+    <elementParameter field="TEXT" name="OOZIE_USE_KEYTAB" value="" show="false"/>
+    <elementParameter field="TEXT" name="OOZIE_KT_PRINCIPAL" value="" show="false"/>
+    <elementParameter field="TEXT" name="OOZIE_KEY_TAB" value="" show="false"/>
+    <elementParameter field="TEXT" name="OOZIE_ENABLE_OO_KERBEROS" value="" show="false"/>
+    <elementParameter field="TEXT" name="OOZIE_NAME_NODE_END_POINT" value="" show="false"/>
+    <elementParameter field="TEXT" name="OOZIE_JOB_TRACKER_ENDPOINT" value="" show="false"/>
+    <elementParameter field="TEXT" name="OOZIE_END_POINT" value="" show="false"/>
+    <elementParameter field="CHECK" name="IMPLICITCONTEXT_USE_PROJECT_SETTINGS" value="true" show="false"/>
+    <elementParameter field="CHECK" name="STATANDLOG_USE_PROJECT_SETTINGS" value="true" show="false"/>
+    <elementParameter field="CHECK" name="MULTI_THREAD_EXECATION" value="false"/>
+    <elementParameter field="TEXT" name="PARALLELIZE_UNIT_SIZE" value="25000"/>
+    <elementParameter field="CHECK" name="IMPLICIT_TCONTEXTLOAD" value="false"/>
+    <elementParameter field="RADIO" name="FROM_FILE_FLAG_IMPLICIT_CONTEXT" value="false" show="false"/>
+    <elementParameter field="RADIO" name="FROM_DATABASE_FLAG_IMPLICIT_CONTEXT" value="false" show="false"/>
+    <elementParameter field="FILE" name="IMPLICIT_TCONTEXTLOAD_FILE" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="FIELDSEPARATOR" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TECHNICAL" name="PROPERTY_TYPE_IMPLICIT_CONTEXT:PROPERTY_TYPE" value="" show="false"/>
+    <elementParameter field="TECHNICAL" name="PROPERTY_TYPE_IMPLICIT_CONTEXT:REPOSITORY_PROPERTY_TYPE" value="" show="false"/>
+    <elementParameter field="CLOSED_LIST" name="DB_TYPE_IMPLICIT_CONTEXT" value="" show="false"/>
+    <elementParameter field="CLOSED_LIST" name="DB_VERSION_IMPLICIT_CONTEXT" value="" show="false"/>
+    <elementParameter field="TEXT" name="URL_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TABLE" name="DRIVER_JAR_IMPLICIT_CONTEXT" show="false"/>
+    <elementParameter field="TEXT" name="DRIVER_CLASS_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="HOST_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="PORT_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="DBNAME_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="LOCAL_SERVICE_NAME_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="PROPERTIES_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="SCHEMA_DB_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="USER_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS_IMPLICIT_CONTEXT" value="0RMsyjmybrE=" show="false"/>
+    <elementParameter field="FILE" name="DBFILE_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
+    <elementParameter field="DBTABLE" name="DBTABLE_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="QUERY_CONDITION_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
+    <elementParameter field="CLOSED_LIST" name="LOAD_NEW_VARIABLE" value="Warning" show="false"/>
+    <elementParameter field="CLOSED_LIST" name="NOT_LOAD_OLD_VARIABLE" value="Warning" show="false"/>
+    <elementParameter field="CHECK" name="PRINT_OPERATIONS" value="false" show="false"/>
+    <elementParameter field="CHECK" name="DISABLE_ERROR" value="false" show="false"/>
+    <elementParameter field="CHECK" name="DISABLE_WARNINGS" value="false" show="false"/>
+    <elementParameter field="CHECK" name="DISABLE_INFO" value="false" show="false"/>
+    <elementParameter field="CHECK" name="ON_STATCATCHER_FLAG" value="false"/>
+    <elementParameter field="CHECK" name="ON_LOGCATCHER_FLAG" value="false"/>
+    <elementParameter field="CHECK" name="ON_METERCATCHER_FLAG" value="false"/>
+    <elementParameter field="CHECK" name="ON_CONSOLE_FLAG" value="false" show="false"/>
+    <elementParameter field="CHECK" name="ON_FILES_FLAG" value="false" show="false"/>
+    <elementParameter field="DIRECTORY" name="FILE_PATH" value="&quot;C:/Users/Pand14S/RemoteWorkspace/.metadata&quot;" show="false"/>
+    <elementParameter field="TEXT" name="FILENAME_STATS" value="&quot;stats_file.txt&quot;" show="false"/>
+    <elementParameter field="TEXT" name="FILENAME_LOGS" value="&quot;logs_file.txt&quot;" show="false"/>
+    <elementParameter field="TEXT" name="FILENAME_METTER" value="&quot;meter_file.txt&quot;" show="false"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="ISO-8859-15" show="false"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15" show="false"/>
+    <elementParameter field="CHECK" name="ON_DATABASE_FLAG" value="false" show="false"/>
+    <elementParameter field="CLOSED_LIST" name="DB_TYPE" value="tJDBCOutput" show="false"/>
+    <elementParameter field="CLOSED_LIST" name="DB_VERSION" value="ORACLE_11" show="false"/>
+    <elementParameter field="TEXT" name="URL" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TABLE" name="DRIVER_JAR" show="false"/>
+    <elementParameter field="TEXT" name="DRIVER_CLASS" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="HOST" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="PORT" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="DATASOURCE" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="DBNAME" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="LOCAL_SERVICE_NAME" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="PROPERTIES" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="0RMsyjmybrE=" show="false"/>
+    <elementParameter field="FILE" name="DBFILE" value="&quot;&quot;" show="false"/>
+    <elementParameter field="DBTABLE" name="TABLE_STATS" value="&quot;&quot;" show="false"/>
+    <elementParameter field="DBTABLE" name="TABLE_LOGS" value="&quot;&quot;" show="false"/>
+    <elementParameter field="DBTABLE" name="TABLE_METER" value="&quot;&quot;" show="false"/>
+    <elementParameter field="CHECK" name="CATCH_RUNTIME_ERRORS" value="true" show="false"/>
+    <elementParameter field="CHECK" name="CATCH_USER_ERRORS" value="true" show="false"/>
+    <elementParameter field="CHECK" name="CATCH_USER_WARNING" value="true" show="false"/>
+    <elementParameter field="CHECK" name="CATCH_REALTIME_STATS" value="false" show="false"/>
+    <elementParameter field="TEXT" name="HEADERFOOTER_HEADERID" value="" show="false"/>
+    <elementParameter field="CHECK" name="HEADER_ENABLED" value="false" show="false"/>
+    <elementParameter field="TEXT" name="HEADER_LIBRARY" value="" show="false"/>
+    <elementParameter field="TEXT" name="HEADER_CODE" value="" show="false"/>
+    <elementParameter field="TEXT" name="HEADER_IMPORT" value="" show="false"/>
+    <elementParameter field="TEXT" name="HEADERFOOTER_FOOTERID" value="" show="false"/>
+    <elementParameter field="CHECK" name="FOOTER_ENABLED" value="false" show="false"/>
+    <elementParameter field="TEXT" name="FOOTER_LIBRARY" value="" show="false"/>
+    <elementParameter field="TEXT" name="FOOTER_CODE" value="" show="false"/>
+    <elementParameter field="TEXT" name="FOOTER_IMPORT" value="" show="false"/>
+    <routinesParameter id="_JP7oUFv1EeeSRus8KI9c-g" name="DQTechnical"/>
+    <routinesParameter id="_JPzsgFv1EeeSRus8KI9c-g" name="DataMasking"/>
+    <routinesParameter id="_JOF1QFv1EeeSRus8KI9c-g" name="DataOperation"/>
+    <routinesParameter id="_JP398Fv1EeeSRus8KI9c-g" name="DataQualityDependencies"/>
+    <routinesParameter id="_JP1hsFv1EeeSRus8KI9c-g" name="DataQuality"/>
+    <routinesParameter id="_JP6aMFv1EeeSRus8KI9c-g" name="DqStringHandling"/>
+    <routinesParameter id="_JPDekFv1EeeSRus8KI9c-g" name="Mathematical"/>
+    <routinesParameter id="_JPFTwFv1EeeSRus8KI9c-g" name="Numeric"/>
+    <routinesParameter id="_JPj04Fv1EeeSRus8KI9c-g" name="Relational"/>
+    <routinesParameter id="_JP9dgFv1EeeSRus8KI9c-g" name="SQLike"/>
+    <routinesParameter id="_JPpUcFv1EeeSRus8KI9c-g" name="StringHandling"/>
+    <routinesParameter id="_JPrJoFv1EeeSRus8KI9c-g" name="TalendDataGenerator"/>
+    <routinesParameter id="_JPs-0Fv1EeeSRus8KI9c-g" name="TalendDate"/>
+    <routinesParameter id="_JPu0AFv1EeeSRus8KI9c-g" name="TalendString"/>
+    <routinesParameter id="_JXRDQN5dEeaPFMXnQZ1dSQ" name="StandardizerowTstandardizerow_1"/>
+    <routinesParameter id="_IN8ZwN8YEeaQ2ZcYtth_VQ" name="Unstructured_data_standardizerowTstandardizerow_1"/>
+    <routinesParameter id="_XB7ckFvJEeehidvvWhRXqw" name="Dynamic_Delta_Load"/>
+    <routinesParameter id="_DqYoQFZnEeelGvR7sOY3Wg" name="Dynamic_Delta_Load_v1"/>
+    <routinesParameter id="_EC0_YNDOEeamqdUoLK39Ug" name="GenerateDate"/>
+    <routinesParameter id="_kmsmAMNKEeW3AMObSTyzLw" name="TracabUtils"/>
+    <routinesParameter id="_rSdr4BjoEeaXZpc63th25Q" name="myRoutine"/>
+  </parameters>
+  <node componentName="tRunJob" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="384" posY="64">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_1" show="false"/>
+    <elementParameter field="CHECK" name="USE_DYNAMIC_JOB" value="false"/>
+    <elementParameter field="TEXT" name="CONTEXT_JOB" value="" show="false"/>
+    <elementParameter field="PROCESS_TYPE" name="PROCESS" value="PREJOB"/>
+    <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_CONTEXT" value="Default"/>
+    <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_PROCESS" value="_GXKBQHOXEee2K4OUQtnVqg"/>
+    <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_VERSION" value="Latest"/>
+    <elementParameter field="TEXT" name="CONTEXT_NAME" value="Default" show="false"/>
+    <elementParameter field="CHECK" name="USE_INDEPENDENT_PROCESS" value="false"/>
+    <elementParameter field="CHECK" name="DIE_ON_CHILD_ERROR" value="true"/>
+    <elementParameter field="CHECK" name="TRANSMIT_WHOLE_CONTEXT" value="true"/>
+    <elementParameter field="TABLE" name="CONTEXTPARAMS">
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="taskname"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.taskname"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="tablename"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.tablename"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="filename"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.filename"/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="PROPAGATE_CHILD_RESULT" value="false"/>
+    <elementParameter field="CHECK" name="PRINT_PARAMETER" value="false"/>
+    <elementParameter field="CHECK" name="TRANSMIT_ORIGINAL_CONTEXT" value="true" show="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="prejob"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tRunJob_1">
+      <column comment="" key="false" length="-1" name="lastruntime" nullable="true" pattern="&quot;yyyy-MM-dd hh:MM:ss&quot;" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tLogRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="704" posY="64">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tLogRow_1" show="false"/>
+    <elementParameter field="RADIO" name="BASIC_MODE" value="false"/>
+    <elementParameter field="RADIO" name="TABLE_PRINT" value="true"/>
+    <elementParameter field="RADIO" name="VERTICAL" value="false"/>
+    <elementParameter field="RADIO" name="PRINT_UNIQUE" value="true" show="false"/>
+    <elementParameter field="RADIO" name="PRINT_LABEL" value="false" show="false"/>
+    <elementParameter field="RADIO" name="PRINT_UNIQUE_LABEL" value="false" show="false"/>
+    <elementParameter field="TEXT" name="FIELDSEPARATOR" value="&quot;|&quot;" show="false"/>
+    <elementParameter field="CHECK" name="PRINT_HEADER" value="false" show="false"/>
+    <elementParameter field="CHECK" name="PRINT_UNIQUE_NAME" value="false" show="false"/>
+    <elementParameter field="CHECK" name="PRINT_COLNAMES" value="false" show="false"/>
+    <elementParameter field="CHECK" name="USE_FIXED_LENGTH" value="false" show="false"/>
+    <elementParameter field="TABLE" name="LENGTHS" show="false">
+      <elementValue elementRef="SCHEMA_COLUMN" value="lastruntime"/>
+      <elementValue elementRef="LENGTH" value="10"/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="PRINT_CONTENT_WITH_LOG4J" value="true"/>
+    <elementParameter field="TEXT" name="SCHEMA_OPT_NUM" value="100" show="false"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tLogRow_1">
+      <column comment="" key="false" length="-1" name="lastruntime" nullable="true" pattern="&quot;yyyy-MM-dd hh:MM:ss&quot;" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="1120" posY="64">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_1" show="false"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="context.lastruntime=input_row.lastruntime;&#xA;System.out.println(&quot;last run time : &quot;+context.lastruntime);&#xA;&#xA;"/>
+    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tJavaRow_1"/>
+  </node>
+  <node componentName="tRedshiftConnection" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="352" posY="224">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRedshiftConnection_1" show="false"/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" value="_BJ0L8HOSEeeVwcv8qEE2PA" show="false"/>
+    <elementParameter field="TEXT" name="HOST" value="context.CDP_Redshift_ELT_Connection_Server"/>
+    <elementParameter field="TEXT" name="TYPE" value="REDSHIFT" show="false"/>
+    <elementParameter field="TEXT" name="PORT" value="context.CDP_Redshift_ELT_Connection_Port"/>
+    <elementParameter field="TEXT" name="DBNAME" value="context.CDP_Redshift_ELT_Connection_Database"/>
+    <elementParameter field="TEXT" name="SCHEMA_DB" value="context.CDP_Redshift_ELT_Connection_Schema"/>
+    <elementParameter field="TEXT" name="USER" value="context.CDP_Redshift_ELT_Connection_Login"/>
+    <elementParameter field="PASSWORD" name="PASS" value="8pW6Nmy2kufDmV0LLEFMsnTnOb9iA0ahTwdlhYcn7G1V+IOQAiS5Qdb4BydB/67b"/>
+    <elementParameter field="TEXT" name="PROPERTIES" value="context.CDP_Redshift_ELT_Connection_AdditionalParams"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;" show="false"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="CHECK" name="USE_SHARED_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="SHARED_CONNECTION_NAME" value="" show="false"/>
+    <elementParameter field="CHECK" name="AUTO_COMMIT" value="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="normalised_connection"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+  </node>
+  <node componentName="tRedshiftRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="224" posY="384">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRedshiftRow_1" show="false"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tRedshiftConnection_1"/>
+    <elementParameter field="TEXT" name="HOST" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="PORT" value="&quot;5439&quot;" show="false"/>
+    <elementParameter field="TEXT" name="DBNAME" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="TYPE" value="Redshift" show="false"/>
+    <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="0RMsyjmybrE=" show="false"/>
+    <elementParameter field="TEXT" name="PROPERTIES" value="&quot;&quot;" show="false"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;&quot;"/>
+    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value="" show="false"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;update edfenormalisedconfzone.ContractRaS set &#xD;&#xA;fkContractIdentifier=a.fkContractIdentifier,&#xD;&#xA;fkAccountIdentifier=a.fkAccountIdentifier,&#xD;&#xA;fkPreviousSupplierIdentifier=a.fkPreviousSupplierIdentifier,&#xD;&#xA;fkSalesRepresentativeIdentifier=a.fkSalesRepresentativeIdentifier,&#xD;&#xA;fkServiceProvisionIdentifier=a.fkServiceProvisionIdentifier,&#xD;&#xA;AnnualConsumptionValue=a.AnnualConsumptionValue,&#xD;&#xA;CampaignChannelCode=a.CampaignChannelCode,&#xD;&#xA;ConfiguredTariffCode=a.ConfiguredTariffCode,&#xD;&#xA;ContractAdditionalInformationText=a.ContractAdditionalInformationText,&#xD;&#xA;ContractAuthorisationTypeCode=a.ContractAuthorisationTypeCode,&#xD;&#xA;ContractCancellationDate=a.ContractCancellationDate,&#xD;&#xA;ContractCancellationPartyCode=a.ContractCancellationPartyCode,&#xD;&#xA;ContractCancellationReasonCode=a.ContractCancellationReasonCode,&#xD;&#xA;ContractChangeReasonCode=a.ContractChangeReasonCode,&#xD;&#xA;ContractClass=a.ContractClass,&#xD;&#xA;ContractEndReasonCode=a.ContractEndReasonCode,&#xD;&#xA;ContractLongevityPeriod=a.ContractLongevityPeriod,&#xD;&#xA;ContractLossExceptionCode=a.ContractLossExceptionCode,&#xD;&#xA;ContractProcessingStatusCode=a.ContractProcessingStatusCode,&#xD;&#xA;ContractReasonCode=a.ContractReasonCode,&#xD;&#xA;ContractRenewalDate=a.ContractRenewalDate,&#xD;&#xA;ContractTermsAcceptedIndicator=a.ContractTermsAcceptedIndicator,&#xD;&#xA;ContractValidationIndicator=a.ContractValidationIndicator,&#xD;&#xA;CRMContractCreatedDate=a.CRMContractCreatedDate,&#xD;&#xA;CRMContractEndDate=a.CRMContractEndDate,&#xD;&#xA;IndustryAnnualConsumptionValue=a.IndustryAnnualConsumptionValue,&#xD;&#xA;LegacyAccountNumber=a.LegacyAccountNumber,&#xD;&#xA;LegacyMoveInDate=a.LegacyMoveInDate,&#xD;&#xA;MoveInDate=a.MoveInDate,&#xD;&#xA;MoveOutDate=a.MoveOutDate,&#xD;&#xA;OSCheckIndicator=a.OSCheckIndicator,&#xD;&#xA;PNGFileReferenceCode=a.PNGFileReferenceCode,&#xD;&#xA;PreferedPaymentDay=a.PreferedPaymentDay,&#xD;&#xA;PromptPaymentIndicator=a.PromptPaymentIndicator,&#xD;&#xA;PurchaseOrderSoldNumber=a.PurchaseOrderSoldNumber,&#xD;&#xA;ScriptReadIndicator=a.ScriptReadIndicator,&#xD;&#xA;SmartInteroperabilityDate=a.SmartInteroperabilityDate,&#xD;&#xA;SmartInteroperabilityIndicator=a.SmartInteroperabilityIndicator,&#xD;&#xA;SmartMeterDataSharingDate=a.SmartMeterDataSharingDate,&#xD;&#xA;SmartMeterDataSharingIndicator=a.SmartMeterDataSharingIndicator,&#xD;&#xA;SmartMeterOptOutDate=a.SmartMeterOptOutDate,&#xD;&#xA;SmartMeterOptOutIndicator=a.SmartMeterOptOutIndicator,&#xD;&#xA;SmartMeterReadConsentCode=a.SmartMeterReadConsentCode,&#xD;&#xA;SmartMeterReadConsentDate=a.SmartMeterReadConsentDate,&#xD;&#xA;SourceSystemIdentifier=a.SourceSystemIdentifier,&#xD;&#xA;CreatedBy= '&quot;+context.taskname+&quot;',&#xD;&#xA;CreatedOn= getdate(),&#xD;&#xA;ModifiedBy= '&quot;+context.taskname+&quot;',&#xD;&#xA;ModifiedOn= getdate()&#xD;&#xA;from &#xD;&#xA;edfenormalisedconfzone.ContractRaS_work a&#xD;&#xA;inner join edfenormalisedconfzone.ContractRaS tgt on (a.fkContractIdentifier = tgt.fkContractIdentifier and a.SourceSystemIdentifier=tgt.SourceSystemIdentifier)&#xD;&#xA;&quot;"/>
+    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="true"/>
+    <elementParameter field="CHECK" name="PROPAGATE_RECORD_SET" value="false"/>
+    <elementParameter field="COLUMN_LIST" name="RECORD_SET_COLUMN" value="" show="false"/>
+    <elementParameter field="CHECK" name="USE_PREPAREDSTATEMENT" value="false"/>
+    <elementParameter field="TABLE" name="SET_PREPAREDSTATEMENT_PARAMETERS" show="false"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;" show="false"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="TEXT" name="COMMIT_EVERY" value="10000" show="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="update"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tRedshiftRow_1"/>
+    <metadata connector="REJECT" name="REJECT">
+      <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" precision="0" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tRedshiftInput" componentVersion="0.102" offsetLabelX="-2" offsetLabelY="-1" posX="352" posY="384">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRedshiftInput_1" show="false"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tRedshiftConnection_1"/>
+    <elementParameter field="TEXT" name="HOST" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="TYPE" value="Redshift" show="false"/>
+    <elementParameter field="TEXT" name="PORT" value="&quot;5439&quot;" show="false"/>
+    <elementParameter field="TEXT" name="DBNAME" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="0RMsyjmybrE=" show="false"/>
+    <elementParameter field="TEXT" name="PROPERTIES" value="&quot;&quot;" show="false"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;&quot;"/>
+    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value="" show="false"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
+    <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;select isnull(sum(rows),0) from stl_insert where query = pg_last_query_id()&quot;"/>
+    <elementParameter field="MAPPING_TYPE" name="MAPPING" value="redshift_id" show="false"/>
+    <elementParameter field="FILE" name="LOG_FILE" value="&quot;&quot;"/>
+    <elementParameter field="CLOSED_LIST" name="LOG_LEVEL" value="1"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;" show="false"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="CHECK" name="USE_CURSOR" value="false"/>
+    <elementParameter field="TEXT" name="CURSOR_SIZE" value="1000" show="false"/>
+    <elementParameter field="CHECK" name="TRIM_ALL_COLUMN" value="false"/>
+    <elementParameter field="TABLE" name="TRIM_COLUMN">
+      <elementValue elementRef="SCHEMA_COLUMN" value="update_count"/>
+      <elementValue elementRef="TRIM" value="false"/>
+    </elementParameter>
+    <elementParameter field="TEXT" name="LABEL" value="update_Count"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tRedshiftInput_1">
+      <column comment="" key="false" length="10" name="update_count" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="10" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="352" posY="512">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_2" show="false"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="//context.updatecount = ((Integer)globalMap.get(&quot;tRedshiftInput_5_NB_LINE&quot;)).toString();&#xA;context.updatecount = input_row.update_count;&#xA;System.out.println(context.updatecount);"/>
+    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="TEXT" name="LABEL" value="set_update_count"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tJavaRow_2"/>
+  </node>
+  <node componentName="tRedshiftRow" componentVersion="0.102" offsetLabelX="-3" offsetLabelY="2" posX="512" posY="384">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRedshiftRow_2" show="false"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tRedshiftConnection_1"/>
+    <elementParameter field="TEXT" name="HOST" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="PORT" value="&quot;5439&quot;" show="false"/>
+    <elementParameter field="TEXT" name="DBNAME" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="TYPE" value="Redshift" show="false"/>
+    <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="0RMsyjmybrE=" show="false"/>
+    <elementParameter field="TEXT" name="PROPERTIES" value="&quot;&quot;" show="false"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;&quot;"/>
+    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value="" show="false"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;insert into edfenormalisedconfzone.ContractRaS &#xD;&#xA;(&#xD;&#xA;fkContractIdentifier,&#xD;&#xA;fkAccountIdentifier,&#xD;&#xA;fkPreviousSupplierIdentifier,&#xD;&#xA;fkSalesRepresentativeIdentifier,&#xD;&#xA;fkServiceProvisionIdentifier,&#xD;&#xA;AnnualConsumptionValue,&#xD;&#xA;CampaignChannelCode,&#xD;&#xA;ConfiguredTariffCode,&#xD;&#xA;ContractAdditionalInformationText,&#xD;&#xA;ContractAuthorisationTypeCode,&#xD;&#xA;ContractCancellationDate,&#xD;&#xA;ContractCancellationPartyCode,&#xD;&#xA;ContractCancellationReasonCode,&#xD;&#xA;ContractChangeReasonCode,&#xD;&#xA;ContractClass,&#xD;&#xA;ContractEndReasonCode,&#xD;&#xA;ContractLongevityPeriod,&#xD;&#xA;ContractLossExceptionCode,&#xD;&#xA;ContractProcessingStatusCode,&#xD;&#xA;ContractReasonCode,&#xD;&#xA;ContractRenewalDate,&#xD;&#xA;ContractTermsAcceptedIndicator,&#xD;&#xA;ContractValidationIndicator,&#xD;&#xA;CRMContractCreatedDate,&#xD;&#xA;CRMContractEndDate,&#xD;&#xA;IndustryAnnualConsumptionValue,&#xD;&#xA;LegacyAccountNumber,&#xD;&#xA;LegacyMoveInDate,&#xD;&#xA;MoveInDate,&#xD;&#xA;MoveOutDate,&#xD;&#xA;OSCheckIndicator,&#xD;&#xA;PNGFileReferenceCode,&#xD;&#xA;PreferedPaymentDay,&#xD;&#xA;PromptPaymentIndicator,&#xD;&#xA;PurchaseOrderSoldNumber,&#xD;&#xA;ScriptReadIndicator,&#xD;&#xA;SmartInteroperabilityDate,&#xD;&#xA;SmartInteroperabilityIndicator,&#xD;&#xA;SmartMeterDataSharingDate,&#xD;&#xA;SmartMeterDataSharingIndicator,&#xD;&#xA;SmartMeterOptOutDate,&#xD;&#xA;SmartMeterOptOutIndicator,&#xD;&#xA;SmartMeterReadConsentCode,&#xD;&#xA;SmartMeterReadConsentDate,&#xD;&#xA;SourceSystemIdentifier,&#xD;&#xA;CreatedBy,&#xD;&#xA;CreatedOn,&#xD;&#xA;ModifiedBy,&#xD;&#xA;ModifiedOn&#xD;&#xA;)&#xD;&#xA;select &#xD;&#xA;a.fkContractIdentifier,&#xD;&#xA;a.fkAccountIdentifier,&#xD;&#xA;a.fkPreviousSupplierIdentifier,&#xD;&#xA;a.fkSalesRepresentativeIdentifier,&#xD;&#xA;a.fkServiceProvisionIdentifier,&#xD;&#xA;a.AnnualConsumptionValue,&#xD;&#xA;a.CampaignChannelCode,&#xD;&#xA;a.ConfiguredTariffCode,&#xD;&#xA;a.ContractAdditionalInformationText,&#xD;&#xA;a.ContractAuthorisationTypeCode,&#xD;&#xA;a.ContractCancellationDate,&#xD;&#xA;a.ContractCancellationPartyCode,&#xD;&#xA;a.ContractCancellationReasonCode,&#xD;&#xA;a.ContractChangeReasonCode,&#xD;&#xA;a.ContractClass,&#xD;&#xA;a.ContractEndReasonCode,&#xD;&#xA;a.ContractLongevityPeriod,&#xD;&#xA;a.ContractLossExceptionCode,&#xD;&#xA;a.ContractProcessingStatusCode,&#xD;&#xA;a.ContractReasonCode,&#xD;&#xA;a.ContractRenewalDate,&#xD;&#xA;a.ContractTermsAcceptedIndicator,&#xD;&#xA;a.ContractValidationIndicator,&#xD;&#xA;a.CRMContractCreatedDate,&#xD;&#xA;a.CRMContractEndDate,&#xD;&#xA;a.IndustryAnnualConsumptionValue,&#xD;&#xA;a.LegacyAccountNumber,&#xD;&#xA;a.LegacyMoveInDate,&#xD;&#xA;a.MoveInDate,&#xD;&#xA;a.MoveOutDate,&#xD;&#xA;a.OSCheckIndicator,&#xD;&#xA;a.PNGFileReferenceCode,&#xD;&#xA;a.PreferedPaymentDay,&#xD;&#xA;a.PromptPaymentIndicator,&#xD;&#xA;a.PurchaseOrderSoldNumber,&#xD;&#xA;a.ScriptReadIndicator,&#xD;&#xA;a.SmartInteroperabilityDate,&#xD;&#xA;a.SmartInteroperabilityIndicator,&#xD;&#xA;a.SmartMeterDataSharingDate,&#xD;&#xA;a.SmartMeterDataSharingIndicator,&#xD;&#xA;a.SmartMeterOptOutDate,&#xD;&#xA;a.SmartMeterOptOutIndicator,&#xD;&#xA;a.SmartMeterReadConsentCode,&#xD;&#xA;a.SmartMeterReadConsentDate,&#xD;&#xA;a.SourceSystemIdentifier,&#xD;&#xA;a.CreatedBy,&#xD;&#xA;a.CreatedOn,&#xD;&#xA;a.ModifiedBy,&#xD;&#xA;a.ModifiedOn&#xD;&#xA;from  edfenormalisedconfzone.ContractRaS_work a&#xD;&#xA;left outer join edfenormalisedconfzone.ContractRaS tgt on (a.fkContractIdentifier = tgt.fkContractIdentifier and a.SourceSystemIdentifier=tgt.SourceSystemIdentifier)&#xD;&#xA;where tgt.SourceSystemIdentifier is null and tgt.fkContractIdentifier is null&quot;"/>
+    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="true"/>
+    <elementParameter field="CHECK" name="PROPAGATE_RECORD_SET" value="false"/>
+    <elementParameter field="COLUMN_LIST" name="RECORD_SET_COLUMN" value="" show="false"/>
+    <elementParameter field="CHECK" name="USE_PREPAREDSTATEMENT" value="false"/>
+    <elementParameter field="TABLE" name="SET_PREPAREDSTATEMENT_PARAMETERS" show="false"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;" show="false"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="TEXT" name="COMMIT_EVERY" value="10000" show="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="insert"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tRedshiftRow_2"/>
+    <metadata connector="REJECT" name="REJECT">
+      <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" precision="0" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tRedshiftInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="672" posY="384">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRedshiftInput_2" show="false"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tRedshiftConnection_1"/>
+    <elementParameter field="TEXT" name="HOST" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="TYPE" value="Redshift" show="false"/>
+    <elementParameter field="TEXT" name="PORT" value="&quot;5439&quot;" show="false"/>
+    <elementParameter field="TEXT" name="DBNAME" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="0RMsyjmybrE=" show="false"/>
+    <elementParameter field="TEXT" name="PROPERTIES" value="&quot;&quot;" show="false"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;&quot;"/>
+    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value="" show="false"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
+    <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="/*&quot;select isnull(sum(rows),0)  from stl_insert where query = pg_last_query_id()-1;&quot;*/&#xD;&#xA;&quot;select isnull(sum(rows),0)  from stl_insert where query = (select max(query) from svl_qlog where upper(substring) like upper('%&quot;+context.tablename+&quot;%'))&quot;"/>
+    <elementParameter field="MAPPING_TYPE" name="MAPPING" value="redshift_id" show="false"/>
+    <elementParameter field="FILE" name="LOG_FILE" value="&quot;&quot;"/>
+    <elementParameter field="CLOSED_LIST" name="LOG_LEVEL" value="1"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;" show="false"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="CHECK" name="USE_CURSOR" value="false"/>
+    <elementParameter field="TEXT" name="CURSOR_SIZE" value="1000" show="false"/>
+    <elementParameter field="CHECK" name="TRIM_ALL_COLUMN" value="false"/>
+    <elementParameter field="TABLE" name="TRIM_COLUMN">
+      <elementValue elementRef="SCHEMA_COLUMN" value="insert_count"/>
+      <elementValue elementRef="TRIM" value="false"/>
+    </elementParameter>
+    <elementParameter field="TEXT" name="LABEL" value="Insert_Count"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tRedshiftInput_2">
+      <column comment="" key="false" length="-1" name="insert_count" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="640" posY="512">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_3" show="false"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="//context.insertcount = ((Integer)globalMap.get(&quot;tRedshiftInput_6_NB_LINE&quot;)).toString();&#xA;context.insertcount = input_row.insert_count;&#xA;System.out.println(context.insertcount);&#xA;&#xA;//System.out.println(input_row.query);&#xA;"/>
+    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="TEXT" name="LABEL" value="set_insert_count"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tJavaRow_3"/>
+  </node>
+  <node componentName="tRedshiftRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="800" posY="384">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRedshiftRow_3" show="false"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tRedshiftConnection_1"/>
+    <elementParameter field="TEXT" name="HOST" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="PORT" value="&quot;5439&quot;" show="false"/>
+    <elementParameter field="TEXT" name="DBNAME" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="TYPE" value="Redshift" show="false"/>
+    <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="0RMsyjmybrE=" show="false"/>
+    <elementParameter field="TEXT" name="PROPERTIES" value="&quot;&quot;" show="false"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;&quot;"/>
+    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value="" show="false"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;delete from edfenormalisedconfzone.ContractRaS&#xD;&#xA;where (fkContractIdentifier,SourceSystemIdentifier) in (&#xD;&#xA;select &#xD;&#xA;skContractIdentifier as ContractIdentifier,6 as SourceSystemIdentifier&#xD;&#xA;from edfestagingzone_sap_crm.CRMD_ISUEXTA4 a&#xD;&#xA;inner join edfenormalisedconfzone.Contract b on a.A4ISUCONTR = b.ContractIdentifier&#xD;&#xA;where a.deleteflag=true and a.modifiedon>=cast('&quot;+context.lastruntime+&quot;' as timestamp)&#xD;&#xA;)&quot;"/>
+    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="true"/>
+    <elementParameter field="CHECK" name="PROPAGATE_RECORD_SET" value="false"/>
+    <elementParameter field="COLUMN_LIST" name="RECORD_SET_COLUMN" value="" show="false"/>
+    <elementParameter field="CHECK" name="USE_PREPAREDSTATEMENT" value="false"/>
+    <elementParameter field="TABLE" name="SET_PREPAREDSTATEMENT_PARAMETERS" show="false"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;" show="false"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="TEXT" name="COMMIT_EVERY" value="10000" show="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="delete"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tRedshiftRow_3"/>
+    <metadata connector="REJECT" name="REJECT">
+      <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" precision="0" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tRedshiftInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="960" posY="384">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRedshiftInput_3" show="false"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tRedshiftConnection_1"/>
+    <elementParameter field="TEXT" name="HOST" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="TYPE" value="Redshift" show="false"/>
+    <elementParameter field="TEXT" name="PORT" value="&quot;5439&quot;" show="false"/>
+    <elementParameter field="TEXT" name="DBNAME" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="0RMsyjmybrE=" show="false"/>
+    <elementParameter field="TEXT" name="PROPERTIES" value="&quot;&quot;" show="false"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;&quot;"/>
+    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value="" show="false"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
+    <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;select isnull(sum(rows),0) from stl_delete where query = pg_last_query_id()&quot;"/>
+    <elementParameter field="MAPPING_TYPE" name="MAPPING" value="redshift_id" show="false"/>
+    <elementParameter field="FILE" name="LOG_FILE" value="&quot;&quot;"/>
+    <elementParameter field="CLOSED_LIST" name="LOG_LEVEL" value="1"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;" show="false"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="CHECK" name="USE_CURSOR" value="false"/>
+    <elementParameter field="TEXT" name="CURSOR_SIZE" value="1000" show="false"/>
+    <elementParameter field="CHECK" name="TRIM_ALL_COLUMN" value="false"/>
+    <elementParameter field="TABLE" name="TRIM_COLUMN">
+      <elementValue elementRef="SCHEMA_COLUMN" value="delete_count"/>
+      <elementValue elementRef="TRIM" value="false"/>
+    </elementParameter>
+    <elementParameter field="TEXT" name="LABEL" value="delete_Count"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tRedshiftInput_3">
+      <column comment="" key="false" length="10" name="delete_count" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="10" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="928" posY="512">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_4" show="false"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="//context.deletecount = ((Integer)globalMap.get(&quot;tRedshiftInput_4_NB_LINE&quot;)).toString();&#xA;context.deletecount = input_row.delete_count;&#xA;System.out.println(context.deletecount);&#xA;"/>
+    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="TEXT" name="LABEL" value="set_delete_count"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tJavaRow_4"/>
+  </node>
+  <node componentName="tRedshiftCommit" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1056" posY="512">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRedshiftCommit_1" show="false"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tRedshiftConnection_1"/>
+    <elementParameter field="CHECK" name="CLOSE" value="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="commit"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tRedshiftCommit_1"/>
+  </node>
+  <node componentName="tRunJob" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="960" posY="672">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_2" show="false"/>
+    <elementParameter field="CHECK" name="USE_DYNAMIC_JOB" value="false"/>
+    <elementParameter field="TEXT" name="CONTEXT_JOB" value="" show="false"/>
+    <elementParameter field="PROCESS_TYPE" name="PROCESS" value="POSTJOB"/>
+    <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_CONTEXT" value="Default"/>
+    <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_PROCESS" value="_GVOuoHOXEee2K4OUQtnVqg"/>
+    <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_VERSION" value="Latest"/>
+    <elementParameter field="TEXT" name="CONTEXT_NAME" value="Default" show="false"/>
+    <elementParameter field="CHECK" name="USE_INDEPENDENT_PROCESS" value="false"/>
+    <elementParameter field="CHECK" name="DIE_ON_CHILD_ERROR" value="true"/>
+    <elementParameter field="CHECK" name="TRANSMIT_WHOLE_CONTEXT" value="true"/>
+    <elementParameter field="TABLE" name="CONTEXTPARAMS">
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="taskname"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.taskname"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="filename"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.filename"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="tablename"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.tablename"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="insertcount"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.insertcount"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="updatecount"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.updatecount"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="deletecount"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.deletecount"/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="PROPAGATE_CHILD_RESULT" value="false"/>
+    <elementParameter field="CHECK" name="PRINT_PARAMETER" value="false"/>
+    <elementParameter field="CHECK" name="TRANSMIT_ORIGINAL_CONTEXT" value="true" show="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="postjob"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tRunJob_2"/>
+  </node>
+  <node componentName="tRunJob" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="160" posY="64">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_4" show="false"/>
+    <elementParameter field="CHECK" name="USE_DYNAMIC_JOB" value="false"/>
+    <elementParameter field="TEXT" name="CONTEXT_JOB" value="" show="false"/>
+    <elementParameter field="PROCESS_TYPE" name="PROCESS" value="Dependency_Update"/>
+    <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_CONTEXT" value="Default"/>
+    <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_PROCESS" value="_sDG7AKhiEee7sI2UpCcymQ"/>
+    <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_VERSION" value="Latest"/>
+    <elementParameter field="TEXT" name="CONTEXT_NAME" value="Default" show="false"/>
+    <elementParameter field="CHECK" name="USE_INDEPENDENT_PROCESS" value="false"/>
+    <elementParameter field="CHECK" name="DIE_ON_CHILD_ERROR" value="true"/>
+    <elementParameter field="CHECK" name="TRANSMIT_WHOLE_CONTEXT" value="true"/>
+    <elementParameter field="TABLE" name="CONTEXTPARAMS">
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="tablename"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.tablename"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="status"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="&quot;InProgress&quot;"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="sourcesystem"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.sourcesystem"/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="PROPAGATE_CHILD_RESULT" value="false"/>
+    <elementParameter field="CHECK" name="PRINT_PARAMETER" value="false"/>
+    <elementParameter field="CHECK" name="TRANSMIT_ORIGINAL_CONTEXT" value="true" show="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="Dependency_Update"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tRunJob_4"/>
+  </node>
+  <node componentName="tRunJob" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="160" posY="224">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_5" show="false"/>
+    <elementParameter field="CHECK" name="USE_DYNAMIC_JOB" value="false"/>
+    <elementParameter field="TEXT" name="CONTEXT_JOB" value="" show="false"/>
+    <elementParameter field="PROCESS_TYPE" name="PROCESS" value="NZ_Dependency"/>
+    <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_CONTEXT" value="Default"/>
+    <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_PROCESS" value="_eJTZYMBaEeeKUoHaI4uGdQ"/>
+    <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_VERSION" value="Latest"/>
+    <elementParameter field="TEXT" name="CONTEXT_NAME" value="Default" show="false"/>
+    <elementParameter field="CHECK" name="USE_INDEPENDENT_PROCESS" value="false"/>
+    <elementParameter field="CHECK" name="DIE_ON_CHILD_ERROR" value="true"/>
+    <elementParameter field="CHECK" name="TRANSMIT_WHOLE_CONTEXT" value="true"/>
+    <elementParameter field="TABLE" name="CONTEXTPARAMS">
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="taskname"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.taskname"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="hardstop"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.hardstop"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="interval"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.interval"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="tablename"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.tablename"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="filename"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.filename"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="lastruntime"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.lastruntime"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="sourcesystem"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.sourcesystem"/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="PROPAGATE_CHILD_RESULT" value="false"/>
+    <elementParameter field="CHECK" name="PRINT_PARAMETER" value="false"/>
+    <elementParameter field="CHECK" name="TRANSMIT_ORIGINAL_CONTEXT" value="true" show="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="DependencyCheck"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tRunJob_5">
+      <column comment="" key="false" length="-1" name="lastruntime" nullable="true" pattern="&quot;yyyy-MM-dd hh:MM:ss&quot;" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tAssertCatcher" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="128" posY="640">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tAssertCatcher_1" show="false"/>
+    <elementParameter field="CHECK" name="CATCH_JAVA_EXCEPTION" value="true"/>
+    <elementParameter field="CHECK" name="GET_ORIGINAL_EXCEPTION" value="true"/>
+    <elementParameter field="CHECK" name="CATCH_TASSERT" value="true"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tAssertCatcher_1">
+      <column key="false" length="0" name="moment" nullable="true" pattern="&quot;yyyy-MM-dd HH:mm:ss&quot;" precision="0" sourceType="" type="id_Date" originalLength="-1" usefulColumn="true"/>
+      <column key="false" length="20" name="pid" nullable="true" precision="0" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column key="false" length="50" name="project" nullable="true" precision="0" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column key="false" length="255" name="job" nullable="true" precision="0" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column key="false" length="5" name="language" nullable="true" precision="0" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column key="false" length="50" name="origin" nullable="true" precision="0" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column key="false" length="10" name="status" nullable="true" precision="0" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column key="false" length="255" name="substatus" nullable="true" precision="0" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column key="false" length="255" name="description" nullable="true" precision="0" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column defaultValue="" key="false" length="0" name="exception" nullable="true" precision="0" sourceType="" type="id_Object" originalLength="255" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="352" posY="640">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_5" show="false"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="if (input_row.description == &quot;Child job running failed&quot;)&#xA;{&#xA;context.errordesc=&quot;Dependency Failure&quot;;&#xA;}&#xA;else&#xA;{&#xA;context.errordesc=input_row.description;&#xA;}&#xA;//System.out.println(context.redshift_table);&#xA;//System.out.println(context.filename);&#xA;//System.out.println(context.errordesc);&#xA;&#xA;"/>
+    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="TEXT" name="LABEL" value="set_error_description"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tJavaRow_5"/>
+  </node>
+  <node componentName="tRedshiftRollback" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="576" posY="640">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRedshiftRollback_1" show="false"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tRedshiftConnection_1"/>
+    <elementParameter field="CHECK" name="CLOSE" value="true"/>
+    <elementParameter field="TEXT" name="LABEL" value="rollback"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tRedshiftRollback_1"/>
+  </node>
+  <node componentName="tRunJob" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="800" posY="640">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_3" show="false"/>
+    <elementParameter field="CHECK" name="USE_DYNAMIC_JOB" value="false"/>
+    <elementParameter field="TEXT" name="CONTEXT_JOB" value="" show="false"/>
+    <elementParameter field="PROCESS_TYPE" name="PROCESS" value="Staging_ErrorHandlingJob"/>
+    <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_CONTEXT" value="Default"/>
+    <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_PROCESS" value="_GYtgcHOXEee2K4OUQtnVqg"/>
+    <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_VERSION" value="Latest"/>
+    <elementParameter field="TEXT" name="CONTEXT_NAME" value="Default" show="false"/>
+    <elementParameter field="CHECK" name="USE_INDEPENDENT_PROCESS" value="false"/>
+    <elementParameter field="CHECK" name="DIE_ON_CHILD_ERROR" value="true"/>
+    <elementParameter field="CHECK" name="TRANSMIT_WHOLE_CONTEXT" value="true"/>
+    <elementParameter field="TABLE" name="CONTEXTPARAMS">
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="taskname"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.taskname"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="tablename"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.tablename"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="filename"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.filename"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="errordesc"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.errordesc"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="mailfrom"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.mailfrom"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="mailto"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.mailto"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="sourcesystem"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.sourcesystem"/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="PROPAGATE_CHILD_RESULT" value="false"/>
+    <elementParameter field="CHECK" name="PRINT_PARAMETER" value="false"/>
+    <elementParameter field="CHECK" name="TRANSMIT_ORIGINAL_CONTEXT" value="true" show="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="staging_errorhandling_job"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tRunJob_3"/>
+  </node>
+  <node componentName="tDie" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="128" posY="736">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDie_1" show="false"/>
+    <elementParameter field="TEXT" name="MESSAGE" value="&quot;Load Failure&quot;"/>
+    <elementParameter field="TEXT" name="CODE" value="4"/>
+    <elementParameter field="CLOSED_LIST" name="PRIORITY" value="5"/>
+    <elementParameter field="CHECK" name="EXIT_JVM" value="false"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tDie_1"/>
+  </node>
+  <node componentName="tRunJob" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="1152" posY="672">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_6" show="false"/>
+    <elementParameter field="CHECK" name="USE_DYNAMIC_JOB" value="false"/>
+    <elementParameter field="TEXT" name="CONTEXT_JOB" value="" show="false"/>
+    <elementParameter field="PROCESS_TYPE" name="PROCESS" value="Dependency_Update"/>
+    <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_CONTEXT" value="Default"/>
+    <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_PROCESS" value="_sDG7AKhiEee7sI2UpCcymQ"/>
+    <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_VERSION" value="Latest"/>
+    <elementParameter field="TEXT" name="CONTEXT_NAME" value="Default" show="false"/>
+    <elementParameter field="CHECK" name="USE_INDEPENDENT_PROCESS" value="false"/>
+    <elementParameter field="CHECK" name="DIE_ON_CHILD_ERROR" value="true"/>
+    <elementParameter field="CHECK" name="TRANSMIT_WHOLE_CONTEXT" value="true"/>
+    <elementParameter field="TABLE" name="CONTEXTPARAMS">
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="tablename"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.tablename"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="status"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="&quot;Load successful&quot;"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="sourcesystem"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.sourcesystem"/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="PROPAGATE_CHILD_RESULT" value="false"/>
+    <elementParameter field="CHECK" name="PRINT_PARAMETER" value="false"/>
+    <elementParameter field="CHECK" name="TRANSMIT_ORIGINAL_CONTEXT" value="true" show="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="Dependency_Update"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tRunJob_6"/>
+  </node>
+  <node componentName="tRedshiftRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="64" posY="384">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRedshiftRow_4" show="false"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tRedshiftConnection_1"/>
+    <elementParameter field="TEXT" name="HOST" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="PORT" value="&quot;5439&quot;" show="false"/>
+    <elementParameter field="TEXT" name="DBNAME" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="TYPE" value="Redshift" show="false"/>
+    <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="0RMsyjmybrE=" show="false"/>
+    <elementParameter field="TEXT" name="PROPERTIES" value="&quot;&quot;" show="false"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;&quot;"/>
+    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value="" show="false"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;delete from edfenormalisedconfzone.ContractRaS_work;&#xD;&#xA;insert into edfenormalisedconfzone.ContractRaS_work&#xD;&#xA;(&#xD;&#xA;fkContractIdentifier,&#xD;&#xA;fkAccountIdentifier,&#xD;&#xA;fkPreviousSupplierIdentifier,&#xD;&#xA;fkSalesRepresentativeIdentifier,&#xD;&#xA;fkServiceProvisionIdentifier,&#xD;&#xA;AnnualConsumptionValue,&#xD;&#xA;CampaignChannelCode,&#xD;&#xA;ConfiguredTariffCode,&#xD;&#xA;ContractAdditionalInformationText,&#xD;&#xA;ContractAuthorisationTypeCode,&#xD;&#xA;ContractCancellationDate,&#xD;&#xA;ContractCancellationPartyCode,&#xD;&#xA;ContractCancellationReasonCode,&#xD;&#xA;ContractChangeReasonCode,&#xD;&#xA;ContractClass,&#xD;&#xA;ContractEndReasonCode,&#xD;&#xA;ContractLongevityPeriod,&#xD;&#xA;ContractLossExceptionCode,&#xD;&#xA;ContractProcessingStatusCode,&#xD;&#xA;ContractReasonCode,&#xD;&#xA;ContractRenewalDate,&#xD;&#xA;ContractTermsAcceptedIndicator,&#xD;&#xA;ContractValidationIndicator,&#xD;&#xA;CRMContractCreatedDate,&#xD;&#xA;CRMContractEndDate,&#xD;&#xA;IndustryAnnualConsumptionValue,&#xD;&#xA;LegacyAccountNumber,&#xD;&#xA;LegacyMoveInDate,&#xD;&#xA;MoveInDate,&#xD;&#xA;MoveOutDate,&#xD;&#xA;OSCheckIndicator,&#xD;&#xA;PNGFileReferenceCode,&#xD;&#xA;PreferedPaymentDay,&#xD;&#xA;PromptPaymentIndicator,&#xD;&#xA;PurchaseOrderSoldNumber,&#xD;&#xA;ScriptReadIndicator,&#xD;&#xA;SmartInteroperabilityDate,&#xD;&#xA;SmartInteroperabilityIndicator,&#xD;&#xA;SmartMeterDataSharingDate,&#xD;&#xA;SmartMeterDataSharingIndicator,&#xD;&#xA;SmartMeterOptOutDate,&#xD;&#xA;SmartMeterOptOutIndicator,&#xD;&#xA;SmartMeterReadConsentCode,&#xD;&#xA;SmartMeterReadConsentDate,&#xD;&#xA;SourceSystemIdentifier,&#xD;&#xA;CreatedBy,&#xD;&#xA;CreatedOn,&#xD;&#xA;ModifiedBy,&#xD;&#xA;ModifiedOn&#xD;&#xA;)&#xD;&#xA;&#xD;&#xA;select tot.* from (&#xD;&#xA;with rsFirstLine as (&#xD;&#xA;select * from &#xD;&#xA; (&#xD;&#xA;     select a.A4ISUCONTR , a.GUID, a.A4CONTSTART, a.modifiedon,  case when  a.A4RELPREV = ' ' then 1  else 0 end as  FirstRecord ,  case when  a.A4RELNEXT = ' ' then 1  else 0 end as  LastRecord &#xD;&#xA;      from edfestagingzone_SAP_CRM.CRMD_ISUEXTA4 a inner join &#xD;&#xA;      ( &#xD;&#xA;          select A4ISUCONTR from &#xD;&#xA;          (&#xD;&#xA;             select x.A4ISUCONTR, case when  A4RELPREV = ' ' then 1  else 0 end as  FirstRecord ,  case when  A4RELNEXT = ' ' then 1  else 0 end as  LastRecord &#xD;&#xA;             from edfestagingzone_SAP_CRM.CRMD_ISUEXTA4 x  where deleteflag = false and A4ISUCONTR &lt;> ' ' and A4QUOTATION &lt;> 'X' and A4CANCELLED &lt;> 'X' &#xD;&#xA;         ) x &#xD;&#xA;         group by A4ISUCONTR&#xD;&#xA;         having SUM(FirstRecord) = 1 and SUM(LastRecord) = 1&#xD;&#xA;     ) b on (A.A4ISUCONTR = b.A4ISUCONTR)&#xD;&#xA;      where (a.A4ISUCONTR &lt;> ' ' and a.A4QUOTATION &lt;> 'X' and a.A4CANCELLED &lt;> 'X' and a.deleteflag = false)&#xD;&#xA;    union&#xD;&#xA;    --select the contract if all the lines are cancelled and based on cahnged date identify first or last line&#xD;&#xA;         select x.A4ISUCONTR , x.GUID, x.A4CONTSTART, x.modifiedon, &#xD;&#xA;        case when Y.CHANGED_AT|| Y.CREATED_AT||Y.GUID = z.minChangedAt then 1 else 0 end as FirstRecord,&#xD;&#xA;        case when Y.CHANGED_AT|| Y.CREATED_AT||Y.GUID = z.maxChangedAt then 1 else 0 end as LastRecord&#xD;&#xA;        from edfestagingzone_SAP_CRM.CRMD_ISUEXTA4 x &#xD;&#xA;        inner join edfestagingzone_SAP_CRM.CRMD_ORDERADM_I y on (x.GUID = y.GUID and y.deleteflag = false)&#xD;&#xA;        inner join &#xD;&#xA;        (&#xD;&#xA;        select A.A4ISUCONTR, MAX(D.CHANGED_AT|| D.CREATED_AT||D.GUID) as maxChangedAt, MIN(D.CHANGED_AT|| D.CREATED_AT||D.GUID) as minChangedAt&#xD;&#xA;         from edfestagingzone_SAP_CRM.CRMD_ISUEXTA4 a inner join &#xD;&#xA;            (&#xD;&#xA;                select A4ISUCONTR, count(*) as recCount from edfestagingzone_SAP_CRM.CRMD_ISUEXTA4 a  &#xD;&#xA;                where deleteflag = false and a.A4CANCELLED = 'X' and a.A4QUOTATION &lt;> 'X' and a.A4ISUCONTR &lt;> ' '&#xD;&#xA;                group by A4ISUCONTR&#xD;&#xA;            ) b on (a.A4ISUCONTR = b.A4ISUCONTR and a.deleteflag = false)&#xD;&#xA;            inner join &#xD;&#xA;            (&#xD;&#xA;                select A4ISUCONTR, count(*) as recCount from edfestagingzone_SAP_CRM.CRMD_ISUEXTA4 a &#xD;&#xA;                where deleteflag = false and a.A4QUOTATION &lt;> 'X' and a.A4ISUCONTR &lt;> ' '&#xD;&#xA;                group by A4ISUCONTR&#xD;&#xA;            ) c on (b.A4ISUCONTR = c.A4ISUCONTR and b.recCount = c.recCount)&#xD;&#xA;            inner join edfestagingzone_SAP_CRM.CRMD_ORDERADM_I d on (a.GUID = d.GUID and a.A4QUOTATION &lt;> 'X' and a.A4ISUCONTR &lt;> ' ' and d.deleteflag = false)&#xD;&#xA;            group by A.A4ISUCONTR&#xD;&#xA;          ) z on (X.A4ISUCONTR = z.A4ISUCONTR and (Y.CHANGED_AT||Y.CREATED_AT||Y.GUID  = z.maxChangedAt or Y.CHANGED_AT||Y.CREATED_AT||Y.GUID  = z.minChangedAt)&#xD;&#xA;          and x.A4QUOTATION &lt;> 'X' and x.deleteflag = false)&#xD;&#xA;    ) x where FirstRecord = 1&#xD;&#xA;),&#xD;&#xA;&#xD;&#xA;rsLastLine as (&#xD;&#xA;select * from &#xD;&#xA; (&#xD;&#xA;     select a.A4ISUCONTR , a.GUID, a.A4CONTSTART, a.A4CONTEND, a.modifiedon, a.A4BUAGGUID, a.A4CANCELLED, case when  a.A4RELPREV = ' ' then 1  else 0 end as  FirstRecord ,  case when  a.A4RELNEXT = ' ' then 1  else 0 end as  LastRecord &#xD;&#xA;      from edfestagingzone_SAP_CRM.CRMD_ISUEXTA4 a inner join &#xD;&#xA;      ( &#xD;&#xA;          select A4ISUCONTR from &#xD;&#xA;          (&#xD;&#xA;             select x.A4ISUCONTR, case when  A4RELPREV = ' ' then 1  else 0 end as  FirstRecord ,  case when  A4RELNEXT = ' ' then 1  else 0 end as  LastRecord &#xD;&#xA;             from edfestagingzone_SAP_CRM.CRMD_ISUEXTA4 x  where deleteflag = false and A4ISUCONTR &lt;> ' ' and A4QUOTATION &lt;> 'X' and A4CANCELLED &lt;> 'X' &#xD;&#xA;         ) x &#xD;&#xA;         group by A4ISUCONTR&#xD;&#xA;         having SUM(FirstRecord) = 1 and SUM(LastRecord) = 1&#xD;&#xA;     ) b on (A.A4ISUCONTR = b.A4ISUCONTR)&#xD;&#xA;      where a.A4ISUCONTR &lt;> ' ' and a.A4QUOTATION &lt;> 'X' and a.A4CANCELLED &lt;> 'X' and a.deleteflag = false&#xD;&#xA;    union&#xD;&#xA;    --select the contract if all the lines are cancelled and based on cahnged date identify first or last line&#xD;&#xA;         select x.A4ISUCONTR , x.GUID, x.A4CONTSTART, x.A4CONTEND, x.modifiedon, x.A4BUAGGUID,   x.A4CANCELLED, &#xD;&#xA;        case when Y.CHANGED_AT|| Y.CREATED_AT||Y.GUID = z.minChangedAt then 1 else 0 end as FirstRecord,&#xD;&#xA;        case when Y.CHANGED_AT|| Y.CREATED_AT||Y.GUID = z.maxChangedAt then 1 else 0 end as LastRecord&#xD;&#xA;        from edfestagingzone_SAP_CRM.CRMD_ISUEXTA4 x &#xD;&#xA;        inner join edfestagingzone_SAP_CRM.CRMD_ORDERADM_I y on (x.GUID = y.GUID and y.deleteflag = false and x.deleteflag = false)&#xD;&#xA;        inner join &#xD;&#xA;        (&#xD;&#xA;        select A.A4ISUCONTR, MAX(D.CHANGED_AT|| D.CREATED_AT||D.GUID) as maxChangedAt, MIN(D.CHANGED_AT|| D.CREATED_AT||D.GUID) as minChangedAt&#xD;&#xA;         from edfestagingzone_SAP_CRM.CRMD_ISUEXTA4 a inner join &#xD;&#xA;            (&#xD;&#xA;                select A4ISUCONTR, count(*) as recCount from edfestagingzone_SAP_CRM.CRMD_ISUEXTA4 a  &#xD;&#xA;                where deleteflag = false and a.A4CANCELLED = 'X' and a.A4QUOTATION &lt;> 'X' and a.A4ISUCONTR &lt;> ' '&#xD;&#xA;                group by A4ISUCONTR&#xD;&#xA;            ) b on (a.A4ISUCONTR = b.A4ISUCONTR and a.deleteflag = false)&#xD;&#xA;            inner join &#xD;&#xA;            (&#xD;&#xA;                select A4ISUCONTR, count(*) as recCount from edfestagingzone_SAP_CRM.CRMD_ISUEXTA4 a &#xD;&#xA;                where deleteflag = false and a.A4QUOTATION &lt;> 'X' and a.A4ISUCONTR &lt;> ' '&#xD;&#xA;                group by A4ISUCONTR&#xD;&#xA;            ) c on (b.A4ISUCONTR = c.A4ISUCONTR and b.recCount = c.recCount)&#xD;&#xA;            inner join edfestagingzone_SAP_CRM.CRMD_ORDERADM_I d on (a.GUID = d.GUID and a.A4QUOTATION &lt;> 'X' and a.A4ISUCONTR &lt;> ' ' and d.deleteflag = false)&#xD;&#xA;            group by A.A4ISUCONTR&#xD;&#xA;          ) z on (X.A4ISUCONTR = z.A4ISUCONTR and (Y.CHANGED_AT||Y.CREATED_AT||Y.GUID  = z.maxChangedAt or Y.CHANGED_AT||Y.CREATED_AT||Y.GUID  = z.minChangedAt)&#xD;&#xA;          and x.A4QUOTATION &lt;> 'X' and x.deleteflag = false)&#xD;&#xA;    ) x where LastRecord = 1&#xD;&#xA;)&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;select &#xD;&#xA;Contract.skContractIdentifier as fkContractIdentifier,&#xD;&#xA;isnull(Account.skAccountIdentifier,-1) as fkAccountIdentifier,&#xD;&#xA;-1 as fkPreviousSupplierIdentifier,&#xD;&#xA;isnull(Party2.skPartyIdentifier,-1) as fkSalesRepresentativeIdentifier,&#xD;&#xA;isnull(ServiceProvisionRaS.skServiceProvisionIdentifier,-1) as fkServiceProvisionIdentifier,&#xD;&#xA;null as AnnualConsumptionValue,&#xD;&#xA;d9.DomainReferenceCode as CampaignChannelCode,&#xD;&#xA;d1.DomainReferenceCode as ConfiguredTariffCode,&#xD;&#xA;null as ContractAdditionalInformationText,&#xD;&#xA;null as ContractAuthorisationTypeCode,&#xD;&#xA;case when rsLastLine.A4CANCELLED = 'X' then &#xD;&#xA;(case when (rsLastLine.A4CONTEND = '' or rsLastLine.A4CONTEND like '%00000000%') then null::date else TO_DATE(rsLastLine.A4CONTEND,'YYYYMMDD') end)&#xD;&#xA;else null::date end as ContractCancellationDate,&#xD;&#xA;d2.DomainReferenceCode as ContractCancellationPartyCode,&#xD;&#xA;d3.DomainReferenceCode as ContractCancellationReasonCode,&#xD;&#xA;EVER.SSWTCREASON as ContractChangeReasonCode,&#xD;&#xA;d4.DomainReferenceCode as ContractClass,&#xD;&#xA;d5.DomainReferenceCode as ContractEndReasonCode,&#xD;&#xA;null as ContractLongevityPeriod,&#xD;&#xA;d6.DomainReferenceCode as ContractLossExceptionCode,&#xD;&#xA;null as ContractProcessingStatusCode,&#xD;&#xA;d7.DomainReferenceCode as ContractReasonCode,&#xD;&#xA;null::date as ContractRenewalDate,&#xD;&#xA;'T' as ContractTermsAcceptedIndicator,&#xD;&#xA;'T' as ContractValidationIndicator,&#xD;&#xA;case when (cast(CRMD_ORDERADM_I2.CREATED_AT as varchar)='' or cast(CRMD_ORDERADM_I2.CREATED_AT as varchar)='0' or cast(CRMD_ORDERADM_I2.CREATED_AT as varchar) like '%00000000%') &#xD;&#xA;     then null::date &#xD;&#xA;     else TO_timestamp(cast(CRMD_ORDERADM_I2.CREATED_AT as varchar),'YYYYMMDDHHMISS') end as CRMContractCreatedDate,&#xD;&#xA;case when SCAPPTSEG.APPT_TYPE = 'CONTEND' &#xD;&#xA;     then (case when (cast(SCAPPTSEG.TST_FROM as varchar)='0' or cast(SCAPPTSEG.TST_FROM as varchar) like '%00000000%') &#xD;&#xA;          then null::timestamp &#xD;&#xA;          else to_timestamp(cast(SCAPPTSEG.TST_FROM as varchar),'YYYYMMDDHHMISS') end )&#xD;&#xA;     else null::date end as CRMContractEndDate,&#xD;&#xA;null as IndustryAnnualConsumptionValue,&#xD;&#xA;EVER.VREFER as LegacyAccountNumber,&#xD;&#xA;case when (EVER.EINZDAT_ALT='' or EVER.EINZDAT_ALT='00000000') then null::date else TO_DATE(EVER.EINZDAT_ALT,'YYYYMMDD') end as LegacyMoveInDate,&#xD;&#xA;case when (EVER.EINZDAT='' or EVER.EINZDAT='00000000') then null::date else TO_DATE(EVER.EINZDAT,'YYYYMMDD') end as MoveInDate,&#xD;&#xA;case when (EVER.AUSZDAT='' or EVER.AUSZDAT='00000000') then null::date else TO_DATE(EVER.AUSZDAT,'YYYYMMDD') end as MoveOutDate,&#xD;&#xA;'T' as OSCheckIndicator,&#xD;&#xA;null as PNGFileReferenceCode,&#xD;&#xA;CRMM_BUAG_H.ZZPAY_DATE as PreferedPaymentDay,&#xD;&#xA;case when CRMM_BUAG_H.ZZPROMPT_PAY = 'X' then 'Y' else 'N' end as PromptPaymentIndicator,&#xD;&#xA;null::int as PurchaseOrderSoldNumber,&#xD;&#xA;case when CRMD_ORDERADM_H.ZZORDERADM_H0301 = 'X' then 'Y' else 'N' end as ScriptReadIndicator,&#xD;&#xA;case when (ZCRMD_SM_CONNA.ZZNA0023='' or ZCRMD_SM_CONNA.ZZNA0023='00000000') then null::date else TO_DATE(ZCRMD_SM_CONNA.ZZNA0023,'YYYYMMDD')  end as SmartInteroperabilityDate,&#xD;&#xA;case when ZCRMD_SM_CONNA.ZZNA0022 = 'X' then 'Y' else 'N' end  as SmartInteroperabilityIndicator,&#xD;&#xA;null::date as SmartMeterDataSharingDate,&#xD;&#xA;'T' as SmartMeterDataSharingIndicator,&#xD;&#xA;case when (ZCRMD_SM_CONNA.ZZNA0015='' or ZCRMD_SM_CONNA.ZZNA0015='00000000') then null::date else TO_DATE(ZCRMD_SM_CONNA.ZZNA0015,'YYYYMMDD')  end as SmartMeterOptOutDate,&#xD;&#xA;case when ZCRMD_SM_CONNA.ZZNA0014 = 'X' then 'Y' else 'N' end as SmartMeterOptOutIndicator,&#xD;&#xA;d8.DomainReferenceCode as SmartMeterReadConsentCode,&#xD;&#xA;case when (ZCRMD_SM_CONNA.ZZNA0011='' or ZCRMD_SM_CONNA.ZZNA0011='00000000') then null::date else TO_DATE(ZCRMD_SM_CONNA.ZZNA0011,'YYYYMMDD')  end as SmartMeterReadConsentDate,&#xD;&#xA;6 as SourceSystemIdentifier,&#xD;&#xA;'&quot;+context.taskname+&quot;' as CreatedBy,&#xD;&#xA;getdate() as CreatedOn,&#xD;&#xA;'&quot;+context.taskname+&quot;' as ModifiedBy,&#xD;&#xA;getdate() as ModifiedOn&#xD;&#xA;from rsFirstLine&#xD;&#xA;inner join rsLastLine on (rsLastLine.A4ISUCONTR = rsFirstLine.A4ISUCONTR )&#xD;&#xA;inner join edfenormalisedconfzone.Contract on (rsLastLine.A4ISUCONTR = Contract.ContractIdentifier AND Contract.SourceSystemIdentifier in (1,2,6))&#xD;&#xA;left outer join edfestagingzone_SAP_CRM.CRMM_BUAG on (rsLastLine.A4BUAGGUID = CRMM_BUAG.BUAG_GUID and CRMM_BUAG.deleteflag = false)&#xD;&#xA;left outer join edfenormalisedconfzone.Account on (CRMM_BUAG.BUAG_ID=Account.AccountIdentifier AND Account.SourceSystemIdentifier in (1,2,6))&#xD;&#xA;left outer join edfestagingzone_SAP_CRM.CRMD_LINK on (rsLastLine.GUID = CRMD_LINK.GUID_HI and CRMD_LINK.OBJTYPE_SET = '07' and CRMD_LINK.deleteflag = false)&#xD;&#xA;left outer join edfestagingzone_SAP_CRM.CRMD_PARTNER on (CRMD_LINK.GUID_SET = CRMD_PARTNER.GUID and CRMD_PARTNER.PARTNER_FCT = '00000012' and CRMD_PARTNER.MAINPARTNER = 'X' AND CRMD_PARTNER.deleteflag = false)&#xD;&#xA;left outer join edfestagingzone_SAP_CRM.BUT000 on (CRMD_PARTNER.PARTNER_NO = BUT000.PARTNER_GUID AND  BUT000.deleteflag = false)&#xD;&#xA;left outer join edfenormalisedconfzone.Party Party2 on (BUT000.PARTNER = Party2.PartyIdentifier AND Party2.SourceSystemIdentifier in (1,2,6))&#xD;&#xA;left outer join edfestagingzone_SAP_ISU.EVER on (rsLastLine.A4ISUCONTR = EVER.VERTRAG and EVER.deleteflag = false)  -- &lt;Check for latest record> &lt;take the latest record based on max of EVERH.BIS > &#xD;&#xA;left outer join (select * from edfestagingzone_sap_isu.EVERH where (VERTRAG,bis) in (select VERTRAG,max(bis) from edfestagingzone_sap_isu.EVERH where deleteflag=false group by VERTRAG)) EVERH&#xD;&#xA;                on (rsLastLine.A4ISUCONTR = EVERH.VERTRAG)&#xD;&#xA;left outer join edfenormalisedconfzone.ServiceProvisionRaS on (EVERH.ANLAGE = ServiceProvisionRaS.ServiceProvisionIdentifier)&#xD;&#xA;left outer join edfestagingzone_SAP_CRM.CRMD_ORDERADM_I on (rsLastLine.GUID = CRMD_ORDERADM_I.GUID and CRMD_ORDERADM_I.deleteflag = false)&#xD;&#xA;left outer join edfestagingzone_SAP_CRM.CRMD_ORDERADM_H on (rsLastLine.GUID = CRMD_ORDERADM_H.GUID and CRMD_ORDERADM_H.deleteflag = false)&#xD;&#xA;left outer join edfestagingzone_SAP_CRM.ZCRMD_COMP_ZN0 on (rsLastLine.GUID = ZCRMD_COMP_ZN0.GUID and ZCRMD_COMP_ZN0.deleteflag = false)&#xD;&#xA;left outer join edfestagingzone_SAP_CRM.CRMD_LINK CRMD_LINK2 on (rsLastLine.GUID = CRMD_LINK2.GUID_HI and CRMD_LINK2.OBJTYPE_SET = '46' and CRMD_LINK2.deleteflag = false)&#xD;&#xA;left outer join edfestagingzone_SAP_CRM.CRMD_CANCEL on (CRMD_LINK2.GUID_SET = CRMD_CANCEL.GUID and CRMD_CANCEL.deleteflag = false)&#xD;&#xA;left outer join edfestagingzone_SAP_CRM.CRMD_ORDERADM_I CRMD_ORDERADM_I2 on (rsFirstLine.GUID = CRMD_ORDERADM_I2.GUID and CRMD_ORDERADM_I2.deleteflag = false)&#xD;&#xA;left outer join edfestagingzone_SAP_CRM.CRMD_LINK CRMD_LINK3 on (rsLastLine.GUID = CRMD_LINK3.GUID_HI and CRMD_LINK3.OBJTYPE_SET = '30' and CRMD_LINK3.deleteflag = false)&#xD;&#xA;left outer join (select * from edfestagingzone_sap_crm.SCAPPTSEG where (APPL_GUID,ENTRY_TST, APPT_TYPE) in &#xD;&#xA;                      (select APPL_GUID,max(ENTRY_TST), APPT_TYPE from edfestagingzone_sap_crm.SCAPPTSEG where deleteflag=false group by APPL_GUID, APPT_TYPE)) SCAPPTSEG  &#xD;&#xA;                      on (CRMD_LINK3.GUID_SET = SCAPPTSEG.APPL_GUID and SCAPPTSEG.APPT_TYPE = 'CONTEND' and SCAPPTSEG.deleteflag = false)&#xD;&#xA;left outer join (select * from edfestagingzone_SAP_CRM.CRMM_BUAG_H where (buag_guid,valid_to) in (&#xD;&#xA;select  buag_guid, max(valid_to) from edfestagingzone_SAP_CRM.CRMM_BUAG_H where deleteflag = false group by buag_guid)&#xD;&#xA;) CRMM_BUAG_H  on (rsLastLine.A4BUAGGUID = CRMM_BUAG_H.BUAG_GUID)&#xD;&#xA;left outer join edfestagingzone_SAP_CRM.ZCRMD_SM_CONNA on (rsLastLine.GUID = ZCRMD_SM_CONNA.GUID and ZCRMD_SM_CONNA.deleteflag = false)&#xD;&#xA;left outer join edfenormalisedconfzone.DomainCodeCrossReference d1 on (d1.SourceCode=ZCRMD_COMP_ZN0.ZZN00010 and d1.DomainName = 'ConfiguredTariffCode' and d1.SourceSystemName = 'SAP CRM' )&#xD;&#xA;left outer join edfenormalisedconfzone.DomainCodeCrossReference d2 on (d2.SourceCode=CRMD_CANCEL.CANCPARTY and d2.DomainName = 'ContractCancellationPartyCode' and d2.SourceSystemName = 'SAP CRM' )&#xD;&#xA;left outer join edfenormalisedconfzone.DomainCodeCrossReference d3 on (d3.SourceCode=CRMD_CANCEL.CANC_REASON and d3.DomainName = 'ContractCancellationReasonCode' and d3.SourceSystemName = 'SAP CRM' )&#xD;&#xA;left outer join edfenormalisedconfzone.DomainCodeCrossReference d4 on (d4.SourceCode=SUBSTRING(CRMD_ORDERADM_I.ORDERED_PROD,2,1) and d4.DomainName = 'ContractClass' and d4.SourceSystemName = 'SAP CRM' )&#xD;&#xA;left outer join edfenormalisedconfzone.DomainCodeCrossReference d5 on (d5.SourceCode=CRMD_ORDERADM_I.ZZCONTEND_REASON and d5.DomainName = 'ContractEndReasonCode' and d5.SourceSystemName = 'SAP CRM' )&#xD;&#xA;left outer join edfenormalisedconfzone.DomainCodeCrossReference d6 on (d6.SourceCode=CRMD_ORDERADM_I.ZZLOSS_EXCP and d6.DomainName = 'ContractLossExceptionCode' and d6.SourceSystemName = 'SAP CRM' )&#xD;&#xA;left outer join edfenormalisedconfzone.DomainCodeCrossReference d7 on (d7.SourceCode=CRMD_ORDERADM_I.ZZCONT_REASON and d7.DomainName = 'ContractReasonCode' and d7.SourceSystemName = 'SAP CRM' )&#xD;&#xA;left outer join edfenormalisedconfzone.DomainCodeCrossReference d8 on (d8.SourceCode=ZCRMD_SM_CONNA.ZZNA0010 and d8.DomainName = 'SmartMeterReadConsentCode' and d8.SourceSystemName = 'SAP ISU' )&#xD;&#xA;left outer join edfenormalisedconfzone.DomainCodeCrossReference d9 on (d9.SourceCode=CRMD_ORDERADM_I.ZZCHANNEL and d9.DomainName = 'CampaignChannelCode' and d9.SourceSystemName = 'SAP CRM')&#xD;&#xA;where (rsFirstLine.modifiedon>=cast('&quot;+context.lastruntime+&quot;' as timestamp) or rsLastLine.modifiedon>=cast('&quot;+context.lastruntime+&quot;' as timestamp) or &#xD;&#xA;CRMD_PARTNER.modifiedon>=cast('&quot;+context.lastruntime+&quot;' as timestamp) OR &#xD;&#xA;CRMD_LINK.modifiedon>=cast('&quot;+context.lastruntime+&quot;' as timestamp) OR SCAPPTSEG.modifiedon>=cast('&quot;+context.lastruntime+&quot;' as timestamp) OR&#xD;&#xA;CRMD_ORDERADM_I.modifiedon>=cast('&quot;+context.lastruntime+&quot;' as timestamp) OR ZCRMD_COMP_ZN0.modifiedon>=cast('&quot;+context.lastruntime+&quot;' as timestamp) OR&#xD;&#xA;CRMM_BUAG_H.modifiedon>=cast('&quot;+context.lastruntime+&quot;' as timestamp) OR CRMD_CANCEL.modifiedon>=cast('&quot;+context.lastruntime+&quot;' as timestamp)or CRMM_BUAG.modifiedon>=cast('&quot;+context.lastruntime+&quot;' as timestamp) or &#xD;&#xA;EVER.modifiedon>=cast('&quot;+context.lastruntime+&quot;' as timestamp) or EVERH.modifiedon>=cast('&quot;+context.lastruntime+&quot;' as timestamp) &#xD;&#xA;or ZCRMD_SM_CONNA.modifiedon>=cast('&quot;+context.lastruntime+&quot;' as timestamp) or BUT000.modifiedon>=cast('&quot;+context.lastruntime+&quot;' as timestamp) )&#xD;&#xA;)tot &quot;"/>
+    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="true"/>
+    <elementParameter field="CHECK" name="PROPAGATE_RECORD_SET" value="false"/>
+    <elementParameter field="COLUMN_LIST" name="RECORD_SET_COLUMN" value="" show="false"/>
+    <elementParameter field="CHECK" name="USE_PREPAREDSTATEMENT" value="false"/>
+    <elementParameter field="TABLE" name="SET_PREPAREDSTATEMENT_PARAMETERS" show="false"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;" show="false"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="TEXT" name="COMMIT_EVERY" value="10000" show="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="Temp_ContractRaS"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tRedshiftRow_4"/>
+    <metadata connector="REJECT" name="REJECT">
+      <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" precision="0" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <connection connectorName="FLOW" label="row7_0" lineStyle="0" metaname="tRunJob_1" offsetLabelX="0" offsetLabelY="0" source="tRunJob_1" target="tLogRow_1">
+    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER" show="false">
+      <elementValue elementRef="TRACE_COLUMN" value="lastruntime"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="row7_0" show="false"/>
+  </connection>
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tRunJob_1" offsetLabelX="0" offsetLabelY="0" source="tRunJob_1" target="tRunJob_4">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk1" show="false"/>
+  </connection>
+  <connection connectorName="FLOW" label="row8_0" lineStyle="0" metaname="tLogRow_1" offsetLabelX="0" offsetLabelY="0" source="tLogRow_1" target="tJavaRow_1">
+    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER" show="false">
+      <elementValue elementRef="TRACE_COLUMN" value="lastruntime"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="row8_0" show="false"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tRedshiftConnection_1" offsetLabelX="0" offsetLabelY="0" source="tRedshiftConnection_1" target="tRedshiftRow_4">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk1" show="false"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tRedshiftRow_1" offsetLabelX="0" offsetLabelY="0" source="tRedshiftRow_1" target="tRedshiftInput_1">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk2" show="false"/>
+  </connection>
+  <connection connectorName="FLOW" label="row9_0" lineStyle="0" metaname="tRedshiftInput_1" offsetLabelX="0" offsetLabelY="0" source="tRedshiftInput_1" target="tJavaRow_2">
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="row9_0" show="false"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJavaRow_2" offsetLabelX="0" offsetLabelY="0" source="tJavaRow_2" target="tRedshiftRow_2">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk3" show="false"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tRedshiftRow_2" offsetLabelX="0" offsetLabelY="0" source="tRedshiftRow_2" target="tRedshiftInput_2">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk4" show="false"/>
+  </connection>
+  <connection connectorName="FLOW" label="row11" lineStyle="0" metaname="tRedshiftInput_2" offsetLabelX="0" offsetLabelY="0" source="tRedshiftInput_2" target="tJavaRow_3">
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="row11" show="false"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJavaRow_3" offsetLabelX="0" offsetLabelY="0" source="tJavaRow_3" target="tRedshiftRow_3">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk5" show="false"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tRedshiftRow_3" offsetLabelX="0" offsetLabelY="0" source="tRedshiftRow_3" target="tRedshiftInput_3">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk6" show="false"/>
+  </connection>
+  <connection connectorName="FLOW" label="row7_0_0" lineStyle="0" metaname="tRedshiftInput_3" offsetLabelX="0" offsetLabelY="0" source="tRedshiftInput_3" target="tJavaRow_4">
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="row7_0_0" show="false"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJavaRow_4" offsetLabelX="0" offsetLabelY="0" source="tJavaRow_4" target="tRedshiftCommit_1">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk7" show="false"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tRedshiftCommit_1" offsetLabelX="0" offsetLabelY="0" source="tRedshiftCommit_1" target="tRunJob_2">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk8" show="false"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tRunJob_2" offsetLabelX="0" offsetLabelY="0" source="tRunJob_2" target="tRunJob_6">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk11" show="false"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tRunJob_4" offsetLabelX="0" offsetLabelY="0" source="tRunJob_4" target="tRunJob_5">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk9" show="false"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tRunJob_5" offsetLabelX="0" offsetLabelY="0" source="tRunJob_5" target="tRedshiftConnection_1">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk10" show="false"/>
+  </connection>
+  <connection connectorName="FLOW" label="row3" lineStyle="0" metaname="tAssertCatcher_1" offsetLabelX="0" offsetLabelY="0" source="tAssertCatcher_1" target="tJavaRow_5">
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="row3" show="false"/>
+  </connection>
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tAssertCatcher_1" offsetLabelX="0" offsetLabelY="0" source="tAssertCatcher_1" target="tDie_1">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk2" show="false"/>
+  </connection>
+  <connection connectorName="FLOW" label="row4" lineStyle="0" metaname="tJavaRow_5" offsetLabelX="0" offsetLabelY="0" source="tJavaRow_5" target="tRedshiftRollback_1">
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="row4" show="false"/>
+  </connection>
+  <connection connectorName="FLOW" label="row6" lineStyle="0" metaname="tRedshiftRollback_1" offsetLabelX="0" offsetLabelY="0" source="tRedshiftRollback_1" target="tRunJob_3">
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="row6" show="false"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tRedshiftRow_4" offsetLabelX="0" offsetLabelY="0" source="tRedshiftRow_4" target="tRedshiftRow_1">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk13" show="false"/>
+  </connection>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_1" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="92;131;150" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRedshiftConnection_1" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="92;131;150" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRedshiftRow_1" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="92;131;150" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRedshiftInput_1" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="92;131;150" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRedshiftRow_2" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="92;131;150" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRedshiftInput_2" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="92;131;150" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRedshiftRow_3" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="92;131;150" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRedshiftInput_3" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="92;131;150" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRedshiftCommit_1" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="92;131;150" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_2" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="92;131;150" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_4" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="92;131;150" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_5" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="92;131;150" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tAssertCatcher_1" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="92;131;150" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDie_1" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="92;131;150" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_6" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="92;131;150" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRedshiftRow_4" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="92;131;150" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+  </subjob>
+</talendfile:ProcessType>
